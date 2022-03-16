@@ -1,3 +1,7 @@
+#work-section {
+  visibility: hidden;
+}
+
 /* Featured projects */
 .project {
   /* box-shadow: -6px -20px 20px 5px rgb(15, 15, 15, 0.5); */

@@ -104,6 +104,10 @@
 /* Works */
 /* The margin on top of the second projects under others */
 
+.web-container {
+  visibility: hidden;
+}
+
 div[alt="1"] {
   margin-top: 22px;
 }

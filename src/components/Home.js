@@ -114,21 +114,25 @@ function Home() {
     const resumeElement = document.querySelector(".resume-nav");
     // adds the hover event listenerr on the menu navigation
     useEffect(() => {
+        // Introsuction VARS
+        const firstIntroductionLine = introductionRef.firstElementChild;
+        const secondIntroductionLine = firstIntroductionLine.nextSibling;
 
         // GSAP ANIMATIONS START
         tl
-            // .to(webcontainerRef, 0, { css: { visibility: "visible" } })
-            .from(introductionRef, { duration: .8, opacity: 0, y: 50, ease: "power3.easeInOut" })
+            .to(webcontainerRef, { duration: 0, css: { visibility: "visible" } })
+            .staggerFrom([firstIntroductionLine.children, secondIntroductionLine.children], 1, { y: 70, delay: .8, ease: "power3.easeInOut" }, .15)
+            // .from(firstIntroductionLine.children, { duration: 0.8, y: 100, ease: "power3.easeInOut", delay: .1 })
+            // .from(secondIntroductionLine.children, { duration: 0.8, y: 100, ease: "power3.easeInOut", delay: .1 })
             .from(briefbioRef, { duration: .8, opacity: 0, y: 50, ease: "power3.easeInOut", delay: .1 })
-            // TODO Change the next two to staggerFrom
-            // .to(appNavigationRef, { duration: .9, css: { visibility: "visible" } })
-            .from(appNavigationRef, { duration: .4, opacity: 0, x: -30, ease: "power3.easeInOut" })
-            // .from(resumeElement, { duration: .4, opacity: 0, x: -30, ease: "power3.easeInOut" })
-            .from(profileImgRef, { duration: .6, opacity: 0, x: -30, ease: "power3.easeInOut", delay: .1 })
-            .from(githubLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
-            .from(mailLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
-            .from(LinkedInLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
-            .from(inspirationTextRef, { duration: .6, opacity: 0, x: -30, ease: "power3.easeInOut", delay: .1 })
+            .from(appNavigationRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut" })
+            .from(profileImgRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut", delay: .1 })
+            // .from(githubLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
+            // .from(mailLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
+            // .from(LinkedInLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
+            .staggerFrom([githubLinkRef, mailLinkRef, LinkedInLinkRef, inspirationTextRef], 1, { x: -30, opacity: 0, delay: .1, ease: "power3.easeInOut" }, .2)
+        // .from(inspirationTextRef, { duration: .6, opacity: 0, x: -30, ease: "power3.easeInOut" })
+
 
 
 
@@ -185,7 +189,18 @@ function Home() {
                     {/* Left main side */}
                     <div className="left main-content col-span-6 text-white text-opacity-90 pl-8 pt-20">
                         <div ref={el => { introductionRef = el }} className="introduction text-5xl font-cat-semibold leading-tight">
-                            Hello, I'm <br /> Daniel Adeneye
+                            {/* Note: The styles on the div element below is VERY !important to the animation*/}
+                            <div className='introduction-inner h-14 overflow-hidden'>
+                                <div className=''>
+                                    Hello, I'm
+                                </div>
+                            </div>
+                            {/* Note: The styles on the div element below is VERY !important to the animation*/}
+                            <div className='introduction-inner h-14 overflow-hidden'>
+                                <div>
+                                    Daniel Adeneye
+                                </div>
+                            </div>
                         </div>
                         <div ref={el => { briefbioRef = el }} className="brief-bio py-5 w-553 leading-7 text-white text-opacity-60">
                             I'm a frontend developer. I build high quality and modern web applications with amazing user interfaces with dynamic user experieces. I am currently learning server-side development and I am also deeply interested in cybersecurity.
@@ -242,7 +257,6 @@ function Home() {
                         {/* Inspiration Section */}
                         <div ref={el => { inspirationTextRef = el }} className="inspiration-text text-white text-opacity-60 font-cat-medium py-5">
                             <p>Inspired by <span className="text-white text-opacity-100">kadet</span>
-                                {/* <Link to={() => window.path = "/"}>Home</Link> */}
                             </p>
                         </div>
                     </div>

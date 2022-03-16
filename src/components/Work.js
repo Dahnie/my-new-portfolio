@@ -97,19 +97,24 @@ function Work() {
     let featuredTitleRef = useRef(null)
     let featuredProjectsRef = useRef(null)
     let otherTitleRef = useRef(null)
+    let workSectionRef = useRef(null)
+    let masonryRef = useRef(null)
 
     // Gsap animations
     const tl = gsap.timeline();
     useEffect(() => {
         // GSAP ANIMATIONS
         // Featured projects
-        tl.from(featuredTitleRef, { duration: 0.7, opacity: 0, y: -30, delay: 1.5 })
+        // TODO SSTOPPED
+        console.log(masonryRef.children);
+        tl
+            .to(workSectionRef, { duration: 0, css: { visibility: "visible" } })
+            .from(featuredTitleRef, { duration: 0.7, opacity: 0, y: -30, delay: 1.5 })
             .to(featuredProjectsRef, { duration: 0, css: { visibility: "visible" }, delay: .3 })
             .to(feauturedProjectsReveal, { duration: 1.9, width: "0%", ease: "power2.easeInOut" })
-            .from(featuredProjectsRef, { duration: "0.4", scale: "0.95", ease: "power3.easeInOut" })
-
-            // Other projects
+            .from(featuredProjectsRef, { duration: "0.8", scale: "0.95", ease: "power3.easeInOut", delay: -1 })
             .from(otherTitleRef, { duration: 0.7, opacity: 0, y: -30 })
+
 
 
         // FEAUTIRED
@@ -160,6 +165,7 @@ function Work() {
                 otherProjects.forEach((project) => {
                     project.style.opacity = ".45"
                 })
+                // Changing the prsent element back to default
                 project.style.opacity = "1"
             })
             // On mouseout, change all elements' opacity to 1
@@ -167,6 +173,7 @@ function Work() {
                 otherProjects.forEach((project) => {
                     project.style.opacity = "1"
                 })
+                // Changing the present element back to default
                 project.style.opacity = "1"
             })
         })
@@ -174,7 +181,7 @@ function Work() {
 
     }, [])
     return (
-        <div id="work-section" className='work overflow-auto h-screen pt-24'>
+        <div ref={el => (workSectionRef = el)} id="work-section" className='work overflow-auto h-screen pt-24'>
             {/* Featured */}
             <div className="featured-works pl-10">
                 <div ref={el => { featuredTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-4">FEATURED</div>
@@ -217,6 +224,7 @@ function Work() {
                 <div className="projects-masonry ">
                     {/* Used react-masonry to create the unbalanced effect on the grid */}
                     <Masonry
+                        ref={el => (masonryRef = el)}
                         breakpointCols={2}
                         className="my-masonry-grid"
                         columnClassName="my-masonry-grid_column">
