@@ -1,0 +1,48 @@
+/* Featured projects */
+.project {
+  /* box-shadow: -6px -20px 20px 5px rgb(15, 15, 15, 0.5); */
+  position: relative;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-duration: 300ms;
+  cursor: default;
+}
+
+.project:hover {
+  transform: scale(1.08);
+  box-shadow: -6px -20px 20px 5px rgb(15, 15, 15, 0.5),
+    6px 20px 20px -5px rgb(15, 15, 15, 0.5),
+    -6px -8px 8px -1px rgb(15, 15, 15, 0.5),
+    6px 8px 8px -1px rgb(15, 15, 15, 0.5);
+}
+
+.project::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgb(22, 22, 22);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* OTHER PROJECTS */
+
+.other-project {
+  position: relative;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-duration: 300ms;
+  cursor: default;
+}
+
+.other-project:hover {
+  transform: scale(1.1);
+  box-shadow: -6px -20px 20px 5px rgb(15, 15, 15, 0.5),
+    6px 20px 20px -5px rgb(15, 15, 15, 0.5),
+    -6px -8px 8px -1px rgb(15, 15, 15, 0.5),
+    6px 8px 8px -1px rgb(15, 15, 15, 0.5);
+}
+
+.default-line {
+}
