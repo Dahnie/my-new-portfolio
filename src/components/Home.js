@@ -180,9 +180,8 @@ function Home() {
     return (
         <div>
             <div className="app">
-
                 {/* Container for web view */}
-                <div ref={el => { webcontainerRef = el }} className="web-container h-screen grid grid-cols-12 px-16 bg-primaryBg font-cat-regular" >
+                <div ref={el => { webcontainerRef = el }} className="web-container h-screen overflow-hidden grid grid-cols-12 px-16 bg-primaryBg font-cat-regular" >
                     {/* Left main side */}
                     <div className="left main-content col-span-6 text-white text-opacity-90 pl-8 pt-20">
                         <div ref={el => { introductionRef = el }} className="introduction text-5xl font-cat-semibold leading-tight">
@@ -198,9 +197,8 @@ function Home() {
                             <div ref={workRef} className="menu-nav work-nav relative flex cursor-pointer text-white text-opacity-60 w-56 items-center active-menu">
                                 <div className="">00</div>
                                 <div className="line mx-3">
-                                    <div ref={el => { workLineRef = el }} className="default-line"></div>
+                                    {/* <div ref={el => { workLineRef = el }} className="default-line"></div> */}
                                     <img className="transition duration-1000 ease-in-out" src={workLineSrc} alt="menu-line" />
-                                    {/* <img className="work-menu-line transition duration-1000 ease-in-out" src={smallLine} alt="menu-line" /> */}
                                 </div>
                                 <span>WORK</span>
                             </div>
@@ -208,7 +206,7 @@ function Home() {
                             <div ref={resumeRef} className="menu-nav resume-nav flex cursor-pointer my-5 text-white text-opacity-60 w-56 items-center">
                                 <div className="">01</div>
                                 <div className="line mx-3">
-                                    <div ref={el => { resumeLineRef = el }} className="default-line"></div>
+                                    {/* <div ref={el => { resumeLineRef = el }} className="default-line"></div> */}
                                     <img className='' src={resumeLineSrc} alt="menu-line" />
                                 </div>
                                 <span>RESUME</span>

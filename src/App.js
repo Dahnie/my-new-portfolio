@@ -1,10 +1,15 @@
+import React, { Suspense } from "react"
 import "./assets/styles/css/App.css"
-import Home from "./components/Home"
-import Work from "./components/Work"
+import Loader from "./components/Loader";
+const Home = React.lazy(() => import('./components/Home')); // Lazy-loaded
 
 function App() {
   return (
-    <Home />
+    // Show a spinner while the profile is loading
+    <Suspense fallback={<Loader />}>
+      {/* <ProfilePage /> */}
+      <Home />
+    </Suspense>
   );
 }
 
