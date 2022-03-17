@@ -13,7 +13,7 @@ function Work() {
             name: "Quik Notes",
             tools: `REACT + TAILWINDCSS + MATERIAL UI`,
             description: "A sticky-note-taking application",
-            githubLink: "#",
+            githubLink: "https://github.com/Dahnie/Notepad-pro",
             isProjectLive: true,
             projectLink: "https://quik-notes.netlify.app",
         },
@@ -22,7 +22,7 @@ function Work() {
             name: "Plug App Page",
             tools: `REACT`,
             description: "A landing page for a mobile app",
-            githubLink: "##",
+            githubLink: "https://github.com/Dahnie/plug-landing-page",
             isProjectLive: true,
             projectLink: "https://plug-app.netlify.app",
         }
@@ -34,7 +34,7 @@ function Work() {
             name: "My portfolio",
             tools: `REACT + GSAP`,
             description: "My amazing portfolio",
-            githubLink: "#",
+            githubLink: "https://github.com/Dahnie/my-new-portfolio",
             isProjectLive: true,
             projectLink: "https://daniel-adeneye.netlify.app"
         },
@@ -43,7 +43,7 @@ function Work() {
             name: "Tinder clone",
             tools: `REACT + EXPRESS + MONGODB + FIREBASE`,
             description: "Tinder app clone",
-            githubLink: "##",
+            githubLink: "https://github.com/Dahnie/tinder-app-clone",
             isProjectLive: true,
             projectLink: "https://tinder-clone-6fa92.web.app/"
         },
@@ -51,9 +51,9 @@ function Work() {
             name: "Flick app",
             tools: `REACT+ REACT BOOTSTRAP`,
             description: "A dashboard, signin and signup build",
-            githubLink: "#",
+            githubLink: "https://github.com/Dahnie/flick-project",
             isProjectLive: true,
-            projectLink: "#"
+            projectLink: "https://flick-dash.netlify.app"
             // TODO Rename the flick wheel deploy link
         },
 
@@ -61,7 +61,7 @@ function Work() {
             name: "Choice coin",
             tools: `HTML/CSS + JAVASCRIPT + AlGORAND SDK`,
             description: "A voting algorithm on algorand blockchain",
-            githubLink: "##",
+            githubLink: "https://github.com/Dahnie/choice-coin-voting",
             isProjectLive: false,
             projectLink: "##"
         },
@@ -69,9 +69,9 @@ function Work() {
             name: "Tiktok clone",
             tools: `REACT + EXPRESS + MONGODB + HEROKU`,
             description: "Tiktok app clone",
-            githubLink: "##",
-            isProjectLive: true,
-            projectLink: "https://"
+            githubLink: "https://github.com/Dahnie/tiktok-clone-app",
+            isProjectLive: false,
+            projectLink: "#"
         },
         {
             name: "DSA",
@@ -86,7 +86,7 @@ function Work() {
             name: "Asap app",
             tools: `JAVASCRIPT + BLADE + TAILWINDCSS`,
             description: "A CMS application",
-            githubLink: "##",
+            githubLink: "https://github.com/Ajibola03/asap",
             isProjectLive: false,
             projectLink: "##"
         }
