@@ -10,83 +10,82 @@ function Work() {
     // Featured projects array
     const featuredProjects = [
         {
-            name: "Project 1",
-            tools: `Tool A + Tool B + Tool C + Tool D`,
-            description: "Lorem, ipsum dolor sit amet consectete temporibus",
+            name: "Quik Notes",
+            tools: `REACT + TAILWINDCSS + MATERIAL UI`,
+            description: "A sticky-note-taking application",
             githubLink: "#",
             isProjectLive: true,
-            projectLink: "#",
-            ref: "project1",
+            projectLink: "https://quik-notes.netlify.app",
         },
 
         {
-            name: "Project 2",
-            tools: `Tool A + Tool B`,
-            description: "Lorem, i adipisicing Ratione temporibus",
+            name: "Plug App Page",
+            tools: `REACT`,
+            description: "A landing page for a mobile app",
             githubLink: "##",
-            isProjectLive: false,
-            projectLink: "##",
-            ref: "project2",
+            isProjectLive: true,
+            projectLink: "https://plug-app.netlify.app",
         }
     ]
 
     // Other projects array
     const otherProjects = [
         {
-            name: "Project 3",
-            tools: `Tool A + Tool B + Tool C + Tool D`,
-            description: "Lorem, ipsum dolor sit ame",
+            name: "My portfolio",
+            tools: `REACT + GSAP`,
+            description: "My amazing portfolio",
             githubLink: "#",
             isProjectLive: true,
-            projectLink: "#"
+            projectLink: "https://daniel-adeneye.netlify.app"
         },
 
         {
-            name: "Project 4",
-            tools: `Tool A + Tool B + Tool C`,
-            description: "Lorem,atione temporibus",
+            name: "Tinder clone",
+            tools: `REACT + EXPRESS + MONGODB + FIREBASE`,
+            description: "Tinder app clone",
+            githubLink: "##",
+            isProjectLive: true,
+            projectLink: "https://tinder-clone-6fa92.web.app/"
+        },
+        {
+            name: "Flick app",
+            tools: `REACT+ REACT BOOTSTRAP`,
+            description: "A dashboard, signin and signup build",
+            githubLink: "#",
+            isProjectLive: true,
+            projectLink: "#"
+            // TODO Rename the flick wheel deploy link
+        },
+
+        {
+            name: "Choice coin",
+            tools: `HTML/CSS + JAVASCRIPT + AlGORAND SDK`,
+            description: "A voting algorithm on algorand blockchain",
             githubLink: "##",
             isProjectLive: false,
             projectLink: "##"
         },
         {
-            name: "Project 5",
-            tools: `Tool A + Tool B + Tool C + Tool D`,
-            description: "Lorem, ipsum isicing elit. Ratione temporibus",
-            githubLink: "#",
+            name: "Tiktok clone",
+            tools: `REACT + EXPRESS + MONGODB + HEROKU`,
+            description: "Tiktok app clone",
+            githubLink: "##",
             isProjectLive: true,
+            projectLink: "https://"
+        },
+        {
+            name: "DSA",
+            tools: `JAVASCRIPT(ES6+) + DEEP THINKING`,
+            description: "Algorithm scripting",
+            githubLink: "#",
+            isProjectLive: false,
             projectLink: "#"
         },
 
         {
-            name: "Project 6",
-            tools: `Tool A + Tool B`,
-            description: "Lorem, i adipisicing ",
-            githubLink: "##",
-            isProjectLive: false,
-            projectLink: "##"
-        },
-        {
-            name: "Project 7",
-            tools: `Tool A + Tool B + Tool C + Tool D `,
-            description: "Lorem, i adipisicing elit.s",
-            githubLink: "##",
-            isProjectLive: false,
-            projectLink: "##"
-        },
-        {
-            name: "Project 8",
-            tools: `Tool A + Tool B + Tool C + Tool D`,
-            description: "Lorem, ipsum dolor sit amet consectete temporibus",
-            githubLink: "#",
-            isProjectLive: true,
-            projectLink: "#"
-        },
-
-        {
-            name: "Project 9",
-            tools: `Tool A + Tool B + Tool C`,
-            description: "Lorem, i adipisicing elit. Quasi, temporibus",
+            name: "Asap app",
+            tools: `JAVASCRIPT + BLADE + TAILWINDCSS`,
+            description: "A CMS application",
             githubLink: "##",
             isProjectLive: false,
             projectLink: "##"
@@ -106,7 +105,6 @@ function Work() {
         // GSAP ANIMATIONS
         // Featured projects
         // TODO SSTOPPED
-        console.log(masonryRef.children);
         tl
             .to(workSectionRef, { duration: 0, css: { visibility: "visible" } })
             .from(featuredTitleRef, { duration: 0.7, opacity: 0, y: -30, delay: 1.5 })
@@ -186,23 +184,25 @@ function Work() {
             <div className="featured-works pl-10">
                 <div ref={el => { featuredTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-4">FEATURED</div>
                 <div ref={el => { featuredProjectsRef = el }} className="projects" style={{ visibility: "hidden" }}>
+
+                    {/* <div className='cursor-pointer' onClick={() => { window.location.replace("/", "/resume") }}>Linkkkkk</div> */}
                     {/* Mapping all the projects in the array out */}
                     {featuredProjects.map((project, i) => (
                         <div key={i} className={`elem-${i} project bg-secondaryBg w-11/12 py-6 px-10 mb-2.5`}>
                             <div className="project-name text-white text-opacity-90 text-3xl pb-1.5">
                                 {project.name}
                             </div>
-                            <div className="project-tools text-white text-opacity-60 text-xs font-cat-bold flex">
+                            <div className="project-tools text-white text-opacity-60 text-xs font-cat-medium flex">
                                 {/* Tool A + Tool B + Tool C */}
                                 {project.tools}
                             </div>
-                            <div className="project-description py-6 font-cat-medium text-white text-opacity-40">
+                            <div className="project-description py-6 text-white text-opacity-40">
                                 {project.description}
                             </div>
                             <div className="project-links flex text-sm text-white text-opacity-60 ">
                                 <div className="github-link flex pr-4">
                                     <img className="relative -top-0.5" src={githubAvatar} alt="github-icon" />
-                                    <p className="px-1">Github</p>
+                                    <p className="px-1">Code</p>
                                 </div>
 
                                 {project.isProjectLive &&
@@ -218,7 +218,7 @@ function Work() {
             </div>
 
             {/* Other works */}
-            <div className="other-works my-14 px-12">
+            <div className="other-works my-14 px-11">
                 <div ref={el => { otherTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-5">OTHERS</div>
                 {/* Mapping all the projects in the array out */}
                 <div className="projects-masonry ">
@@ -234,17 +234,17 @@ function Work() {
                                 <div className="project-name text-white text-opacity-90 text-3xl pb-3">
                                     {project.name}
                                 </div>
-                                <div className="project-tools text-white text-opacity-60 text-xs font-cat-bold flex">
+                                <div className="project-tools text-white text-opacity-60 text-xs font-cat-medium flex">
                                     {project.tools}
                                 </div>
-                                <div className="project-description py-6 font-cat-medium text-white text-opacity-40">
+                                <div className="project-description py-6 text-white text-opacity-40">
                                     {project.description}
                                 </div>
                                 <div className="project-links flex text-sm text-white text-opacity-60 pt-12 pb-2">
                                     {/* Github */}
                                     <div className="github-link flex pr-4">
                                         <img className="relative -top-0.5" src={githubAvatar} alt="github-icon" />
-                                        <p className="px-1">Github</p>
+                                        <p className="px-1">Code</p>
                                     </div>
                                     {/* Live */}
                                     {project.isProjectLive &&
