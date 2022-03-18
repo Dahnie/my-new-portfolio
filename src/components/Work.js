@@ -56,6 +56,14 @@ function Work() {
             projectLink: "https://flick-dash.netlify.app"
             // TODO Rename the flick wheel deploy link
         },
+        {
+            name: "Asap app",
+            tools: `JAVASCRIPT + BLADE + TAILWINDCSS`,
+            description: "A CMS application",
+            githubLink: "https://github.com/Ajibola03/asap",
+            isProjectLive: true,
+            projectLink: "http://test-asap.herokuapp.com/"
+        },
 
         {
             name: "Choice coin",
@@ -80,16 +88,8 @@ function Work() {
             githubLink: "#",
             isProjectLive: false,
             projectLink: "#"
-        },
-
-        {
-            name: "Asap app",
-            tools: `JAVASCRIPT + BLADE + TAILWINDCSS`,
-            description: "A CMS application",
-            githubLink: "https://github.com/Ajibola03/asap",
-            isProjectLive: false,
-            projectLink: "##"
         }
+
     ]
 
     let feauturedProjectsReveal = CSSRulePlugin.getRule(".project::after")
@@ -106,7 +106,7 @@ function Work() {
         // Featured projects
         // TODO SSTOPPED
         tl
-            .to(workSectionRef, { duration: 0, css: { visibility: "visible" } })
+            // .to(workSectionRef, { duration: 0, css: { visibility: "visible" } })
             .from(featuredTitleRef, { duration: 0.7, opacity: 0, y: -30, delay: 1.5 })
             .to(featuredProjectsRef, { duration: 0, css: { visibility: "visible" }, delay: .3 })
             .to(feauturedProjectsReveal, { duration: 1.9, width: "0%", ease: "power2.easeInOut" })
@@ -115,7 +115,7 @@ function Work() {
 
 
 
-        // FEAUTIRED
+        // FEAUTIuRED
         const projects = document.querySelectorAll(".project");
         projects.forEach((project) => {
             project.addEventListener("mouseover", (e) => {
@@ -179,7 +179,7 @@ function Work() {
 
     }, [])
     return (
-        <div ref={el => (workSectionRef = el)} id="work-section" className='work overflow-auto h-screen pt-24'>
+        <div ref={el => (workSectionRef = el)} id="work-section" className='work overflow-auto h-screen pt-20 w-full'>
             {/* Featured */}
             <div className="featured-works pl-10">
                 <div ref={el => { featuredTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-4">FEATURED</div>
@@ -189,7 +189,7 @@ function Work() {
                     {/* Mapping all the projects in the array out */}
                     {featuredProjects.map((project, i) => (
                         <div key={i} className={`elem-${i} project bg-secondaryBg w-11/12 py-6 px-10 mb-2.5`}>
-                            <div className="project-name text-white text-opacity-90 text-3xl pb-1.5">
+                            <div className="project-name text-white text-opacity-90 text-2xl xl:text-3xl pb-1.5">
                                 {project.name}
                             </div>
                             <div className="project-tools text-white text-opacity-60 text-xs font-cat-medium flex">
@@ -199,7 +199,7 @@ function Work() {
                             <div className="project-description py-6 text-white text-opacity-40">
                                 {project.description}
                             </div>
-                            <div className="project-links flex text-sm text-white text-opacity-60 ">
+                            <div className="project-links flex lg:text-xs 2xl:text-sm text-white text-opacity-60 ">
                                 <div className="github-link flex pr-4">
                                     <img className="relative -top-0.5" src={githubAvatar} alt="github-icon" />
                                     <p className="px-1">Code</p>
@@ -218,7 +218,7 @@ function Work() {
             </div>
 
             {/* Other works */}
-            <div className="other-works my-14 px-11">
+            <div className="other-works my-14 px-14 xl:px-12 4xl:pr-24 5xl:pr-28">
                 <div ref={el => { otherTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-5">OTHERS</div>
                 {/* Mapping all the projects in the array out */}
                 <div className="projects-masonry ">
@@ -230,26 +230,26 @@ function Work() {
                         columnClassName="my-masonry-grid_column">
                         {/* array of JSX items */}
                         {otherProjects.map((project, i) => (
-                            <div key={i} alt={i} className="other-project bg-secondaryBg  py-10 px-10">
-                                <div className="project-name text-white text-opacity-90 text-3xl pb-3">
+                            <div key={i} alt={i} className="other-project bg-secondaryBg  py-10 lg:px-5 xl:px-8">
+                                <div className="project-name text-white text-opacity-90 text-2xl xl:text-3xl pb-3">
                                     {project.name}
                                 </div>
                                 <div className="project-tools text-white text-opacity-60 text-xs font-cat-medium flex">
                                     {project.tools}
                                 </div>
-                                <div className="project-description py-6 text-white text-opacity-40">
+                                <div className="project-description lg:text-sm xl:text-base py-6 text-white text-opacity-40">
                                     {project.description}
                                 </div>
-                                <div className="project-links flex text-sm text-white text-opacity-60 pt-12 pb-2">
+                                <div className="project-links flex lg:text-xs 2xl:text-sm text-white text-opacity-60 pt-12 pb-2">
                                     {/* Github */}
-                                    <div className="github-link flex pr-4">
-                                        <img className="relative -top-0.5" src={githubAvatar} alt="github-icon" />
+                                    <div className="github-link flex items-center pr-2.5 xl:pr-4">
+                                        <img className="relative lg:h-4 xl:h-max xl:-top-0.5" src={githubAvatar} alt="github-icon" />
                                         <p className="px-1">Code</p>
                                     </div>
                                     {/* Live */}
                                     {project.isProjectLive &&
-                                        (<div className="live-link flex">
-                                            <img className="relative -top-0.5" src={eyeIcon} alt="eye-icon" />
+                                        (<div className="live-link flex items-center">
+                                            <img className="relative lg:h-4 xl:h-max xl:-top-0.5" src={eyeIcon} alt="eye-icon" />
                                             <p className="px-1">View project</p>
                                         </div>)
                                     }

@@ -183,12 +183,12 @@ function Home() {
 
     return (
         <div>
-            <div className="app">
+            <div className="app w-full">
                 {/* Container for web view */}
-                <div ref={el => { webcontainerRef = el }} className="web-container h-screen overflow-hidden grid grid-cols-12 px-16 bg-primaryBg font-cat-regular" >
+                <div ref={el => { webcontainerRef = el }} className="web-container hidden w-full h-screen overflow-hidden lg:grid grid-cols-12 px-3 xl:px-12 2xl:px-5 3xl:px-28 bg-primaryBg font-cat-regular" >
                     {/* Left main side */}
-                    <div className="left main-content col-span-6 text-white text-opacity-90 pl-8 pt-20">
-                        <div ref={el => { introductionRef = el }} className="introduction text-5xl font-cat-semibold leading-tight">
+                    <div className="left main-content col-span-6 text-white text-opacity-90 pl-8 xl:pl-12 2xl:pl-24 4xl:pl-32 5xl:pl-40 pt-20 w-full 2xl:w-4/5">
+                        <div ref={el => { introductionRef = el }} className="introduction text-4xl xl:text-5xl font-cat-semibold leading-tight">
                             {/* Note: The styles on the div element below is VERY !important to the animation*/}
                             <div className='introduction-inner h-14 overflow-hidden'>
                                 <div className=''>
@@ -198,11 +198,11 @@ function Home() {
                             {/* Note: The styles on the div element below is VERY !important to the animation*/}
                             <div className='introduction-inner h-14 overflow-hidden'>
                                 <div>
-                                    Daniel Adeneye
+                                    Daniel Adeneye.
                                 </div>
                             </div>
                         </div>
-                        <div ref={el => { briefbioRef = el }} className="brief-bio py-5 w-553 leading-7 text-white text-opacity-60">
+                        <div ref={el => { briefbioRef = el }} className="brief-bio py-5 w-400px 2xl:w-480px leading-7 text-white text-opacity-60 font-cat-light">
                             I'm a frontend developer. I build high quality and modern web applications with amazing user interfaces with dynamic user experieces. I am currently learning server-side development and I am also deeply interested in cybersecurity.
                         </div>
 
@@ -262,14 +262,18 @@ function Home() {
                     </div>
 
                     {/* Right dynamic side  */}
-                    <div className="right sub-content col-span-6 text-white text-opacity-90 ">
+                    <div className="right sub-content col-span-6 text-white text-opacity-90 5xl:pr-28">
                         {/* Dynamic pages */}
                         {page === "Work" ? <Work /> : <Resume />}
                     </div>
                 </div>
 
                 {/* Container for mobile view */}
-                <div className="mobile-container"></div>
+                <div className="mobile-container lg:hidden">
+                    <div>
+                        mobile poage
+                    </div>
+                </div>
 
 
             </div>

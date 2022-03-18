@@ -10,10 +10,21 @@ module.exports = {
       },
       spacing: {
         "1px": "1px",
-        "553": "553px",
+        "72px": "72px",
+        "400px": "400px",
+        "480px": "480px",
         "734": "734px",
-        "240": "240px",
+        "40per": "40%",
+        "55per": "55%",
       },
+      screens: {
+        //  => @media(min-wwidth: 1840px) {...}
+        "3xl": "1840px",
+        //  => @media(min-wwidth: 2160px) {...}
+        "4xl": "2160px",
+        //  => @media(min-wwidth: 2560px) {...}
+        "5xl": "2560px"
+      }
     },
   },
   plugins: [],
