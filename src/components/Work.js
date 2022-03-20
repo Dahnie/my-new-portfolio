@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css'
 import { gsap } from 'gsap';
 import CSSRulePlugin from "gsap/CSSRulePlugin"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "../assets/styles/css/Work.css";
 import eyeIcon from "../assets/img/eye-icon.svg";
 import githubAvatar from "../assets/img/github-avatar.svg";
@@ -49,12 +51,11 @@ function Work() {
         },
         {
             name: "Flick app",
-            tools: `REACT+ REACT BOOTSTRAP`,
+            tools: `REACT + REACT BOOTSTRAP`,
             description: "A dashboard, signin and signup build",
             githubLink: "https://github.com/Dahnie/flick-project",
             isProjectLive: true,
             projectLink: "https://flick-dash.netlify.app"
-            // TODO Rename the flick wheel deploy link
         },
         {
             name: "Asap app",
@@ -92,26 +93,64 @@ function Work() {
 
     ]
 
+    gsap.registerPlugin(CSSRulePlugin);
     let feauturedProjectsReveal = CSSRulePlugin.getRule(".project::after")
     let featuredTitleRef = useRef(null)
     let featuredProjectsRef = useRef(null)
     let otherTitleRef = useRef(null)
+    let otherWorksRef = useRef(null)
     let workSectionRef = useRef(null)
     let masonryRef = useRef(null)
 
     // Gsap animations
     const tl = gsap.timeline();
+    gsap.registerPlugin(ScrollTrigger);
     useEffect(() => {
         // GSAP ANIMATIONS
         // Featured projects
-        // TODO SSTOPPED
+        // TODO STOPPED
+        gsap.to(featuredProjectsRef.firstChild, {
+            scrollTrigger: {
+                trigger: ".other-projects-1",
+                start: "center 90%",
+                scroller: workSectionRef,
+                scrub: 0.9,
+            },
+            x: 300,
+            y: -300,
+            z: -50,
+            rotation: 60,
+            opacity: 0,
+            duration: 3,
+        })
+
+        gsap.to(featuredProjectsRef.lastChild, {
+            scrollTrigger: {
+                trigger: ".other-projects-1",
+                start: "center 90%",
+                scroller: workSectionRef,
+                scrub: 0.8,
+            },
+            x: 300,
+            y: -300,
+            z: -50,
+            rotation: 60,
+            opacity: 0,
+            duration: 3,
+        })
+
+
         tl
-            // .to(workSectionRef, { duration: 0, css: { visibility: "visible" } })
-            .from(featuredTitleRef, { duration: 0.7, opacity: 0, y: -30, delay: 1.5 })
-            .to(featuredProjectsRef, { duration: 0, css: { visibility: "visible" }, delay: .3 })
-            .to(feauturedProjectsReveal, { duration: 1.9, width: "0%", ease: "power2.easeInOut" })
-            .from(featuredProjectsRef, { duration: "0.8", scale: "0.95", ease: "power3.easeInOut", delay: -1 })
-            .from(otherTitleRef, { duration: 0.7, opacity: 0, y: -30 })
+            .to(workSectionRef, { css: { visibility: "visible" } })
+            .from(featuredTitleRef, { duration: 0.7, opacity: 0, y: -30 })
+            .from([featuredProjectsRef.firstChild, featuredProjectsRef.lastChild], {
+                duration: 1, x: 200, y: -200, z: -50, rotation: 60, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.2
+            }, "<.3")
+            .from(otherWorksRef, { duration: 1, opacity: 0, y: 100 })
+
+        // .to(workSectionRef, { duration: 0, css: { visibility: "visible" } })
+        // .to(featuredProjectsRef, { duration: 0, css: { visibility: "visible" }, delay: .3 })
+
 
 
 
@@ -122,18 +161,22 @@ function Work() {
                 e.stopPropagation();
                 if (project.nextElementSibling) {
                     project.nextElementSibling.style.opacity = ".45"
+                    project.style.transform = "scale(1.08)"
                 }
                 if (project.previousElementSibling) {
                     project.previousElementSibling.style.opacity = ".45"
+                    project.style.transform = "scale(1.08)"
                 }
             })
             project.addEventListener("mouseout", (e) => {
                 e.stopPropagation();
                 if (project.nextElementSibling) {
                     project.nextElementSibling.style.opacity = "1"
+                    project.style.transform = "scale(1)"
                 }
                 if (project.previousElementSibling) {
                     project.previousElementSibling.style.opacity = "1"
+                    project.style.transform = "scale(1)"
                 }
             })
 
@@ -165,6 +208,7 @@ function Work() {
                 })
                 // Changing the prsent element back to default
                 project.style.opacity = "1"
+                // project.style.transform = "scale(1.1)"
             })
             // On mouseout, change all elements' opacity to 1
             project.addEventListener("mouseout", (e) => {
@@ -173,6 +217,7 @@ function Work() {
                 })
                 // Changing the present element back to default
                 project.style.opacity = "1"
+                // project.style.transform = "scale(1)"
             })
         })
 
@@ -183,9 +228,7 @@ function Work() {
             {/* Featured */}
             <div className="featured-works pl-10">
                 <div ref={el => { featuredTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-4">FEATURED</div>
-                <div ref={el => { featuredProjectsRef = el }} className="projects" style={{ visibility: "hidden" }}>
-
-                    {/* <div className='cursor-pointer' onClick={() => { window.location.replace("/", "/resume") }}>Linkkkkk</div> */}
+                <div ref={el => { featuredProjectsRef = el }} className="projects">
                     {/* Mapping all the projects in the array out */}
                     {featuredProjects.map((project, i) => (
                         <div key={i} className={`elem-${i} project bg-secondaryBg w-11/12 py-6 px-10 mb-2.5`}>
@@ -193,23 +236,22 @@ function Work() {
                                 {project.name}
                             </div>
                             <div className="project-tools text-white text-opacity-60 text-xs font-cat-medium flex">
-                                {/* Tool A + Tool B + Tool C */}
                                 {project.tools}
                             </div>
                             <div className="project-description py-6 text-white text-opacity-40">
                                 {project.description}
                             </div>
                             <div className="project-links flex lg:text-xs 2xl:text-sm text-white text-opacity-60 ">
-                                <div className="github-link flex pr-4">
+                                <Link to={project.githubLink} className="github-link flex pr-4">
                                     <img className="relative -top-0.5" src={githubAvatar} alt="github-icon" />
                                     <p className="px-1">Code</p>
-                                </div>
+                                </Link>
 
                                 {project.isProjectLive &&
-                                    (<div className="live-link flex">
+                                    (<Link to={project.projectLink} className="live-link flex">
                                         <img className="relative -top-0.5" src={eyeIcon} alt="eye-icon" />
                                         <p className="px-1">View project</p>
-                                    </div>)
+                                    </Link>)
                                 }
                             </div>
                         </div>
@@ -218,7 +260,7 @@ function Work() {
             </div>
 
             {/* Other works */}
-            <div className="other-works my-14 px-14 xl:px-12 4xl:pr-24 5xl:pr-28">
+            <div ref={el => { otherWorksRef = el }} className="other-works my-14 px-14 xl:px-12 4xl:pr-24 5xl:pr-28">
                 <div ref={el => { otherTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-5">OTHERS</div>
                 {/* Mapping all the projects in the array out */}
                 <div className="projects-masonry ">
@@ -230,7 +272,7 @@ function Work() {
                         columnClassName="my-masonry-grid_column">
                         {/* array of JSX items */}
                         {otherProjects.map((project, i) => (
-                            <div key={i} alt={i} className="other-project bg-secondaryBg  py-10 lg:px-5 xl:px-8">
+                            <div key={i} alt={i} className={`other-project other-projects-${i} bg-secondaryBg  py-10 lg:px-5 xl:px-8`}>
                                 <div className="project-name text-white text-opacity-90 text-2xl xl:text-3xl pb-3">
                                     {project.name}
                                 </div>

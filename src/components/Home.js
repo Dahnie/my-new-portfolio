@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRef, useEffect, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { gsap } from "gsap";
 import Work from "./Work";
 import Resume from "./Resume";
@@ -13,10 +14,12 @@ import twitterAvatar from "../assets/img/twitter-avatar.svg";
 import arrowUp from "../assets/img/arrow-up.svg";
 
 
+
 function Home() {
 
 
-    // let navigate = useNavigate()
+    let navigate = useNavigate()
+    let location = useLocation()
     // The code below handles the hover and active animation effects on the navigation
     const [workLineSrc, setWorkLineSrc] = useState(smallLine)
     const [resumeLineSrc, setResumeLineSrc] = useState(smallLine)
@@ -89,8 +92,7 @@ function Home() {
     const handleWorkActiveEffect = function (e) {
         e.stopPropagation()
         setPage("Work")
-        // history.push("/work")
-        // navigate("/work")
+        window.history.replaceState(null, "Resume | Daniel Adeneye", "/work")
         if (resumeRef.current.classList.contains("active-menu")) {
             resumeRef.current.classList.remove("active-menu")
             workRef.current.classList.add("active-menu")
@@ -102,8 +104,7 @@ function Home() {
     const handleResumeActiveEffect = function (e) {
         e.stopPropagation()
         setPage("Resume")
-        // navigate("/resume")
-        // history.push("/resume")
+        window.history.replaceState(null, "Work | Daniel Adeneye", "/resume")
         if (workRef.current.classList.contains("active-menu")) {
             workRef.current.classList.remove("active-menu")
             resumeRef.current.classList.add("active-menu")
@@ -114,34 +115,27 @@ function Home() {
     const resumeElement = document.querySelector(".resume-nav");
     // adds the hover event listenerr on the menu navigation
     useEffect(() => {
-        // Introsuction VARS
+        // Check value of route to determine page
+        if (location.pathname === "/" || location.pathname === "/work") {
+            setPage("Work")
+        } else if (location.pathname === "/resume") {
+            setPage("Resume")
+        }
+
+        // Introduction VARS
         const firstIntroductionLine = introductionRef.firstElementChild;
         const secondIntroductionLine = firstIntroductionLine.nextSibling;
 
         // GSAP ANIMATIONS START
         tl
             .to(webcontainerRef, { duration: 0, css: { visibility: "visible" } })
-            .staggerFrom([firstIntroductionLine.children, secondIntroductionLine.children], 1, { y: 70, delay: .8, ease: "power3.easeInOut" }, .15)
-            // .from(firstIntroductionLine.children, { duration: 0.8, y: 100, ease: "power3.easeInOut", delay: .1 })
-            // .from(secondIntroductionLine.children, { duration: 0.8, y: 100, ease: "power3.easeInOut", delay: .1 })
+            .from([firstIntroductionLine.children, secondIntroductionLine.children], { duration: 1, y: 75, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.18 }, "<.8")
             .from(briefbioRef, { duration: .8, opacity: 0, y: 50, ease: "power3.easeInOut", delay: .1 })
             .from(appNavigationRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut" })
             .from(profileImgRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut", delay: .1 })
-            // .from(githubLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
-            // .from(mailLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
-            // .from(LinkedInLinkRef, { duration: .3, opacity: 0, y: 30, ease: "power3.easeInOut", delay: .1 })
-            .staggerFrom([githubLinkRef, mailLinkRef, LinkedInLinkRef, inspirationTextRef], 1, { x: -30, opacity: 0, delay: .1, ease: "power3.easeInOut" }, .2)
-        // .from(inspirationTextRef, { duration: .6, opacity: 0, x: -30, ease: "power3.easeInOut" })
-
-
-
-
-
+            .from([githubLinkRef, mailLinkRef, LinkedInLinkRef, inspirationTextRef], { duration: 1, x: -30, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.2 }, "<.3")
 
         // GSAP ANIMATIONS END
-
-
-
         // Checks if a link contains the active menu at mount state(on first load)
         if (resumeRef.current.classList.contains("active-menu")) {
             setResumeLineSrc(longLine)
@@ -271,7 +265,7 @@ function Home() {
                 {/* Container for mobile view */}
                 <div className="mobile-container lg:hidden">
                     <div>
-                        mobile poage
+                        mobile page
                     </div>
                 </div>
 

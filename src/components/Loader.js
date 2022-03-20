@@ -7,7 +7,7 @@ function Loader() {
     let tl = gsap.timeline()
 
     useEffect(() => {
-        tl.to(imgRef, { duration: .5, scale: "1.8" })
+        tl.to(imgRef, { duration: .5, scale: "2" })
     }, [])
     return (
         <div className='w-full h-screen overflow-hidden bg-primaryBg text-white text-opacity-80 flex justify-center items-center'>
