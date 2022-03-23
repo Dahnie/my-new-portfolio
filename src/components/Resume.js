@@ -38,7 +38,7 @@ function Resume() {
                 </div>
                 <div ref={el => { bioRef = el }} className="bio mb-10 h-max overflow-hidden">
                     <div className="bio-inner text-white text-opacity-40 font-cat-light leading-6">
-                        I’m a frontend developer. I harness modern tools and technologies in the design, build and customization of high quality and modern web applications with amazing user interfaces and dynamic user experiences. I am currently learning server-side development and I am also deeply interested in cybersecurity.
+                        I’m a <span className='text-white text-opacity-40'>frontend developer</span>. I harness modern tools and technologies in the design, build and customization of high quality and modern web applications with amazing user interfaces and dynamic user experiences. I am currently learning server-side development and I am also deeply interested in cybersecurity.
                     </div>
                 </div>
                 <div className="skills">

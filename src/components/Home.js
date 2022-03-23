@@ -12,6 +12,8 @@ import githubAvatar from "../assets/img/github-avatar.svg";
 import mailAvatar from "../assets/img/mail-avatar.svg";
 import twitterAvatar from "../assets/img/twitter-avatar.svg";
 import arrowUp from "../assets/img/arrow-up.svg";
+import navClose from "../assets/img/nav-close.svg";
+import navBurger from "../assets/img/nav-burger.svg";
 
 
 
@@ -20,11 +22,9 @@ function Home() {
 
     let navigate = useNavigate()
     let location = useLocation()
-    // The code below handles the hover and active animation effects on the navigation
-    const [workLineSrc, setWorkLineSrc] = useState(smallLine)
-    const [resumeLineSrc, setResumeLineSrc] = useState(smallLine)
     // State that handles the dynamic page routing
     const [page, setPage] = useState("Work")
+    const [navOpen, setNavOpen] = useState(false)
     const workRef = useRef(null)
     const resumeRef = useRef(null)
     // Refs for animations using gsap
@@ -34,57 +34,55 @@ function Home() {
     let profileImgRef = useRef(null)
     let githubLinkRef = useRef(null)
     let mailLinkRef = useRef(null)
-    let LinkedInLinkRef = useRef(null)
+    let twitterLinkRef = useRef(null)
     let inspirationTextRef = useRef(null)
     let appNavigationRef = useRef(null)
-    let workLineRef = useRef(null)
-    let resumeLineRef = useRef(null)
     // GSAP Animation Timeline 
     const tl = gsap.timeline()
 
     // For work link, the 2 functions handle the hover on and off of the work link
     const handleWorkHoverOn = function (e) {
         e.stopPropagation();
+        // Handle color change on words effect
         workRef.current.firstChild.classList.add("menu-hover")
-        // tl.to(workLineRef, { duration: .5, width: "100px" })
-        // tl.set(document.querySelector(".work-menu-line"), { duration: 2, attr: { src:  } });
-        setTimeout(() => {
-            setWorkLineSrc(longLine)
-        }, 120);
+        // Handle line effect
+        if ((location.pathname === "/" || location.pathname === "/work") && workRef.current.classList.contains("active-menu")) {
+            return true;
+        } else {
+            gsap.to(".work-line", { duration: 0.4, css: { width: "72px" } })
+        }
     }
     const handleWorkHoverOff = function (e) {
+        // Handle color change on words effect
         workRef.current.firstChild.classList.remove("menu-hover")
+        // Handle line effect
         if (workRef.current.classList.contains("active-menu")) {
-            setTimeout(() => {
-                setWorkLineSrc(longLine)
-            }, 120);
+            return true;
         } else {
-            // tl.set(document.querySelector(".work-menu-line"), { duration: .8, attr: { src: smallLine } });
-            setTimeout(() => {
-                setWorkLineSrc(smallLine)
-            }, 120);
+            gsap.to(".work-line", { duration: 0.4, css: { width: "54px" } })
         }
     }
 
     // For Resume Link, the 2 functions handle the hover on and off of the resume link
     const handleResumeHoverOn = function (e) {
         e.stopPropagation();
+        // Handle line effect
+        if (location.pathname === "/resume" && resumeRef.current.classList.contains("active-menu")) {
+            return true;
+        } else {
+            gsap.to(".resume-line", { duration: 0.4, css: { width: "72px" } })
+        }
         resumeRef.current.firstChild.classList.add("menu-hover")
-        setTimeout(() => {
-            setResumeLineSrc(longLine)
-        }, 120);
 
     }
     const handleResumeHoverOff = function (e) {
+        // Handles color change on words
         resumeRef.current.firstChild.classList.remove("menu-hover")
+        // Handles line effect
         if (resumeRef.current.classList.contains("active-menu")) {
-            setTimeout(() => {
-                setResumeLineSrc(longLine)
-            }, 120);
+            return true
         } else {
-            setTimeout(() => {
-                setResumeLineSrc(smallLine)
-            }, 120);
+            gsap.to(".resume-line", { duration: 0.4, css: { width: "54px" } })
         }
     }
 
@@ -92,11 +90,14 @@ function Home() {
     const handleWorkActiveEffect = function (e) {
         e.stopPropagation()
         setPage("Work")
+        // Change the url on active
         window.history.replaceState(null, "Resume | Daniel Adeneye", "/work")
         if (resumeRef.current.classList.contains("active-menu")) {
+            // Handles line effect
+            gsap.to(".work-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
+            gsap.to(".resume-line", { duration: 0.4, css: { width: "54px", opacity: ".5" } })
             resumeRef.current.classList.remove("active-menu")
             workRef.current.classList.add("active-menu")
-            setResumeLineSrc(smallLine)
         }
     }
 
@@ -104,22 +105,40 @@ function Home() {
     const handleResumeActiveEffect = function (e) {
         e.stopPropagation()
         setPage("Resume")
+        // chanhe the url on active
         window.history.replaceState(null, "Work | Daniel Adeneye", "/resume")
         if (workRef.current.classList.contains("active-menu")) {
+            // Handle line effect
+            gsap.to(".resume-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
+            gsap.to(".work-line", { duration: 0.4, css: { width: "54px", opacity: ".5" } })
             workRef.current.classList.remove("active-menu")
             resumeRef.current.classList.add("active-menu")
-            setWorkLineSrc(smallLine);
         }
     }
-    const workElement = document.querySelector(".work-nav");
-    const resumeElement = document.querySelector(".resume-nav");
+
+    const handleMailLink = function (e) {
+        e.preventDefault()
+        window.location.href = "mailto:adeneyedaniel007@gmail.com"
+    }
+
     // adds the hover event listenerr on the menu navigation
     useEffect(() => {
-        // Check value of route to determine page
+        // WORK HANDLERS START
+
+
+        // Check value of route to determine page and handle effect
         if (location.pathname === "/" || location.pathname === "/work") {
             setPage("Work")
+            workRef.current.classList.add("active-menu")
+            resumeRef.current.classList.remove("active-menu")
+            // Handle line effect on load
+            gsap.to(".work-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
         } else if (location.pathname === "/resume") {
             setPage("Resume")
+            resumeRef.current.classList.add("active-menu")
+            workRef.current.classList.remove("active-menu")
+            // Handle line effect on load
+            gsap.to(".resume-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
         }
 
         // Introduction VARS
@@ -133,21 +152,17 @@ function Home() {
             .from(briefbioRef, { duration: .8, opacity: 0, y: 50, ease: "power3.easeInOut", delay: .1 })
             .from(appNavigationRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut" })
             .from(profileImgRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut", delay: .1 })
-            .from([githubLinkRef, mailLinkRef, LinkedInLinkRef, inspirationTextRef], { duration: 1, x: -30, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.2 }, "<.3")
+            .from([githubLinkRef, mailLinkRef, twitterLinkRef, inspirationTextRef], { duration: 1, x: -30, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.2 }, "<.3")
+
+        // Handles bio text animation
+        setInterval(() => {
+            tl
+                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
+                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
+
+        }, 6000)
 
         // GSAP ANIMATIONS END
-        // Checks if a link contains the active menu at mount state(on first load)
-        if (resumeRef.current.classList.contains("active-menu")) {
-            setResumeLineSrc(longLine)
-        } else {
-            setResumeLineSrc(smallLine)
-        }
-        // Checks if a link contains the active menu at mount state(on first load)
-        if (workRef.current.classList.contains("active-menu")) {
-            setWorkLineSrc(longLine)
-        } else {
-            setWorkLineSrc(smallLine)
-        }
 
         // Creates the event listeners on the links
         if (workRef && workRef.current && resumeRef && resumeRef.current) {
@@ -161,6 +176,49 @@ function Home() {
             resumeRef.current.addEventListener("click", handleResumeActiveEffect)
         }
 
+        // WEB HANDLERS END
+
+        // MOBILE HANDLERS START
+        const navOpen = document.querySelector(".nav-open")
+        const navClose = document.querySelector(".nav-close")
+        const navbarSection = document.querySelector(".nav-content")
+        const mobileMainContent = document.querySelector(".mobile-main-content")
+
+        // On Nav Open
+        navOpen.addEventListener("click", (e) => {
+            e.stopPropagation();
+            // Handles burger toggle
+            navOpen.parentElement.classList.remove("flex")
+            navOpen.parentElement.classList.toggle("hidden")
+            navClose.parentElement.classList.add("flex")
+            navClose.parentElement.classList.toggle("hidden")
+            setNavOpen(true);
+            // Open nav content
+            navbarSection.classList.remove("hidden")
+            mobileMainContent.classList.add("hidden")
+
+
+
+        })
+
+        // On Nav Close
+        navClose.addEventListener("click", (e) => {
+            e.stopPropagation();
+            // Handles burger toggle
+            navClose.parentElement.classList.remove("flex")
+            navClose.parentElement.classList.toggle("hidden")
+            navOpen.parentElement.classList.add("flex")
+            navOpen.parentElement.classList.toggle("hidden")
+            setNavOpen(false)
+            // Close nav  content
+            navbarSection.classList.add("hidden")
+            mobileMainContent.classList.remove("hidden")
+        })
+
+
+
+        // MOBILE HANDLERS END
+
         return () => {
             // Cleanup the event listeners
             workRef.current.removeEventListener("mouseover", handleWorkHoverOn)
@@ -171,7 +229,6 @@ function Home() {
     }, [])
 
     // Handling URL query change on click of link
-
 
 
 
@@ -197,7 +254,7 @@ function Home() {
                             </div>
                         </div>
                         <div ref={el => { briefbioRef = el }} className="brief-bio py-5 w-400px 2xl:w-480px leading-7 text-white text-opacity-60 font-cat-light">
-                            I'm a frontend developer. I build high quality and modern web applications with amazing user interfaces with dynamic user experieces. I am currently learning server-side development and I am also deeply interested in cybersecurity.
+                            I'm a <span className=' text-white text-opacity-60 bio-text-1'>frontend developer</span>. I build high quality and modern <span className='bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user experieces. I am currently learning <span className="bio-text-3 text-white text-opacity-60">server-side development</span> and I am also deeply interested in <span className='bio-text-4 text-white text-opacity-60'>cybersecurity</span>.
                         </div>
 
                         {/* App navigation Section */}
@@ -206,8 +263,7 @@ function Home() {
                             <div ref={workRef} className="menu-nav work-nav relative flex cursor-pointer text-white text-opacity-60 w-56 items-center active-menu">
                                 <div className="">00</div>
                                 <div className="line mx-3">
-                                    {/* <div ref={el => { workLineRef = el }} className="default-line"></div> */}
-                                    <img className="transition duration-1000 ease-in-out" src={workLineSrc} alt="menu-line" />
+                                    <div className="default-line work-line" style={{ height: "1px", width: "54px", backgroundColor: "white", opacity: "0.5" }}></div>
                                 </div>
                                 <span>WORK</span>
                             </div>
@@ -215,8 +271,7 @@ function Home() {
                             <div ref={resumeRef} className="menu-nav resume-nav flex cursor-pointer my-5 text-white text-opacity-60 w-56 items-center">
                                 <div className="">01</div>
                                 <div className="line mx-3">
-                                    {/* <div ref={el => { resumeLineRef = el }} className="default-line"></div> */}
-                                    <img className='' src={resumeLineSrc} alt="menu-line" />
+                                    <div className="default-line resume-line bg-red-500" style={{ height: "1px", width: "54px", backgroundColor: "white", opacity: "0.5" }}></div>
                                 </div>
                                 <span>RESUME</span>
                             </div>
@@ -229,21 +284,23 @@ function Home() {
                                 <img src={profileImg} alt="avatar-img" />
                             </div>
                             {/* Github */}
-                            <div ref={el => { githubLinkRef = el }} className="social-github flex items-center ml-5 mr-2 font-cat-medium cursor-pointer">
+                            <Link to="https://github.com/Dahnie" ref={el => { githubLinkRef = el }} className="social-github flex items-center ml-5 mr-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
                                 <img className="relative -top-0.5" src={githubAvatar} alt="github" />
                                 <p className="px-1.5">Github</p>
                                 <img src={arrowUp} alt="arrow-up" />
-                            </div>
+                            </Link>
                             {/* Mail */}
-                            <div ref={el => { mailLinkRef = el }} className="social-mail flex items-center mx-2 font-cat-medium cursor-pointer">
+                            <Link to="#" onClick={handleMailLink}
+                                ref={el => { mailLinkRef = el }} className="social-mail flex items-center mx-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
                                 <img className="relative -top-0.5" src={mailAvatar} alt="mail" />
                                 <p className="px-1.5">Mail</p>
                                 <img src={arrowUp} alt="arrow-up" />
-                            </div>
-                            {/* LinkedIn */}
-                            <div ref={el => { LinkedInLinkRef = el }} className="social-linkedin flex items-center mx-2 font-cat-medium cursor-pointer">
+                            </Link>
+
+                            {/* Twitter */}
+                            <div ref={el => { twitterLinkRef = el }} className="social-twitter flex items-center mx-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
                                 <img className="relative -top-0.5" src={twitterAvatar} alt="linkedin" />
-                                <p className="px-1.5">LinkedIn</p>
+                                <p className="px-1.5">Twitter</p>
                                 <img src={arrowUp} alt="arrow-up" />
                             </div>
                         </div>
@@ -263,9 +320,102 @@ function Home() {
                 </div>
 
                 {/* Container for mobile view */}
-                <div className="mobile-container lg:hidden">
-                    <div>
-                        mobile page
+                <div className="mobile-container lg:hidden bg-primaryBg h-screen">
+                    <div className='mobile text-white'>
+                        {/* Navigation */}
+                        <div className="mobile-nav relative pt-8">
+                            {/* Close */}
+                            <div className="nav-option">
+                                <div className="nav-option-inner w-full hidden justify-end absolute py-5 px-10">
+                                    <img className='nav-close py-3 px-3' src={navClose} alt="cancel" />
+                                </div>
+                            </div>
+
+                            <div className="nav-content hidden">
+                                {/* Nav Links */}
+                                <nav className="nav-content-inner pt-40 flex flex-col items-center">
+                                    {/* Nav home */}
+                                    <div className='nav-home w-max px-10 py-3 text-2xl text-white text-opacity-60'>
+                                        <p>
+                                            Home
+                                        </p>
+                                    </div>
+
+                                    {/* Nav work */}
+                                    <div className='nav-work w-max my-3 px-10 py-3 text-2xl text-white text-opacity-60'>
+                                        <p>
+                                            Work
+                                        </p>
+                                    </div>
+
+                                    {/* Nav resume */}
+                                    <div className='nav-resume w-max mb-3 px-10 py-3 text-2xl text-white text-opacity-60'>
+                                        <p>
+                                            Résumé
+                                        </p>
+                                    </div>
+                                </nav>
+
+                                {/* Social connections */}
+                                <div className="social-connections flex flex-col items-center pt-6">
+                                    <div className="title w-max text-opacity-90 px-3 py-1 text-2xl font-cat-semibold">
+                                        <p>
+                                            Connect with me
+                                        </p>
+                                    </div>
+
+                                    {/* social links */}
+                                    <div className="social-links flex px-3 py-2 w-max">
+                                        {/* Github */}
+                                        <Link to="https://github.com/Dahnie" className="mobile-github-link">
+                                            <img src={githubAvatar} alt="github" className="h-7" />
+                                        </Link>
+                                        {/* Mail */}
+                                        <Link to="#" onClick={handleMailLink} className="mobile-mail-link">
+                                            <img src={mailAvatar} alt="mail" className="h-7 px-2 mx-2" />
+                                        </Link>
+                                        {/* LinkedIn */}
+                                        {/* TODO get the correct avatar */}
+                                        <Link to="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
+                                            <img src={twitterAvatar} alt="linkedin" className="h-7 pr-2 mr-2" />
+                                        </Link>
+                                        {/* Twitter */}
+                                        {/* TODO Get the correct twitter link */}
+                                        <Link to="https://github.com/Dahnie" className="mobile-twitter-link">
+                                            <img src={twitterAvatar} alt="" className="h-7" />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Main Content */}
+                        <div className='mobile-main-content'>
+                            {/* Open */}
+                            <div className="nav-option">
+                                <div className="nav-option-inner w-full flex justify-end py-5 px-10">
+                                    <img className='nav-open py-3 px-3' src={navBurger} alt="open" />
+                                </div>
+                            </div>
+
+                            <div className="main-content-inner mt-10">
+                                <div className="mobile-bio  flex flex-col items-center">
+                                    <div className="profile-img h-40 w-40 rounded-full overflow-hidden">
+                                        <img src={profileImg} alt="avatar-img" />
+                                    </div>
+                                    <div className="name text-3xl font-cat-medium flex justify-center pt-7 pb-10">
+                                        <p>
+                                            Hello, I'm Daniel Adeneye.
+                                        </p>
+                                    </div>
+                                    <div className="mobile-description w-4/6">
+                                        <p className='text-center'>
+                                            I'm a <span className=' text-white text-opacity-60 mobile-bio-text-1'>frontend developer</span>. I build high quality and modern <span className='mobile-bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user experieces. I am currently learning <span className="mobile-bio-text-3 text-white text-opacity-60">server-side development</span> and I am also deeply interested in <span className='bio-text-4 text-white text-opacity-60'>cybersecurity</span>.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
