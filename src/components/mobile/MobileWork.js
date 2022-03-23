@@ -2,8 +2,11 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import eyeIcon from "../../assets/img/eye-icon.svg";
 import githubAvatar from "../../assets/img/github-avatar.svg";
+import mailAvatar from "../../assets/img/mail-avatar.svg";
+import twitterAvatar from "../../assets/img/twitter-avatar.svg";
+import linkedinAvatar from "../../assets/img/linkedin-avatar.svg";
 
-function MobileWork() {
+function MobileWork({ handleResumeClick, handleHomeClick }) {
 
     const featuredProjects = [
         {
@@ -87,10 +90,18 @@ function MobileWork() {
 
     ]
 
+    // Functions
+    // Handle mail link actions
+    const handleMailLink = function (e) {
+        e.preventDefault()
+        window.location.replace("mailto:adeneyedaniel007@gmail.com")
+    }
+
+
     return (
         <div className='mobile-work'>
             {/* FEATURED */}
-            <div className="featured-works pl-10">
+            <div className="featured-works pl-8 md:pl-14 ">
                 <div className="title text-white text-opacity-40 text-sm font-cat-semibold pb-4">FEATURED</div>
                 <div className="projects">
                     {/* Mapping all the projects in the array out */}
@@ -126,7 +137,7 @@ function MobileWork() {
             </div>
 
             {/* OTHERS */}
-            <div className="other-works pl-10 pb-12 pt-5">
+            <div className="other-works pl-8 md:pl-14 pb-8 pt-5">
                 <div className="title text-white text-opacity-40 text-sm font-cat-semibold pb-4">OTHERS</div>
                 <div className="projects">
                     {/* Mapping all the projects in the array out */}
@@ -156,6 +167,49 @@ function MobileWork() {
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+
+            {/* Nav Buttons */}
+            <div className="nav-buttons flex justify-center mb-2 text-sm">
+                <div className="nav-btn pr-2 ">
+                    <button onClick={handleHomeClick} className='home-btn bg-secondaryBg w-32 md:w-56 px-3 py-2'>
+                        Home
+                    </button>
+                </div>
+                <div className="nav-btn pl-2">
+                    <button onClick={handleResumeClick} className='home-btn bg-secondaryBg w-32 md:w-56 px-3 py-2'>
+                        Resume
+                    </button>
+                </div>
+            </div>
+
+            {/* Soccials Section */}
+            <div className="social-section mt-12 mb-12 flex flex-col items-center">
+                {/* social links */}
+                <div className="social-links flex px-3 py-2 w-max">
+                    {/* Github */}
+                    <a href="https://github.com/Dahnie" className="mobile-github-link">
+                        <img src={githubAvatar} alt="github" className="h-7" />
+                    </a>
+                    {/* Mail */}
+                    <Link to="#" onClick={handleMailLink} className="mobile-mail-link">
+                        <img src={mailAvatar} alt="mail" className="h-7 px-2 mx-6" />
+                    </Link>
+                    {/* LinkedIn */}
+                    {/* TODO get the correct avatar */}
+                    <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
+                        <img src={linkedinAvatar} alt="linkedin" className="h-7 pr-2 mr-6" />
+                    </a>
+                    {/* Twitter */}
+                    {/* TODO Get the correct twitter link */}
+                    <a href="https://twitter.com/sage_dann" className="mobile-twitter-link">
+                        <img src={twitterAvatar} alt="" className="h-7" />
+                    </a>
+                </div>
+                {/* Inspiration Text */}
+                <div className="mobile-inspiration-text mt-3 text-white text-opacity-60 font-cat-medium">
+                    <p>Inspired by <a href='https://twitter.com/kadetXx' className='text-white text-opacity-100'>Kadet</a></p>
                 </div>
             </div>
         </div>

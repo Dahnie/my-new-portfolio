@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from "react-router-dom"
 import profileImg from "../../assets/img/profile-img.png";
 import githubAvatar from "../../assets/img/github-avatar.svg";
@@ -12,8 +12,11 @@ import MobileWork from './MobileWork';
 import MobileResume from './MobileResume';
 
 
-function MobileHome({ mobilePage, setMobilePage }) {
+function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
     const navigate = useNavigate()
+    const mobileNavRef = useRef(null);
+    const mobileMainRef = useRef(null);
+    const exploreBtnRef = useRef(null)
     // const [navOpen, setNavOpen] = useState(false)
 
 
@@ -23,25 +26,47 @@ function MobileHome({ mobilePage, setMobilePage }) {
     // Handle mail link actions
     const handleMailLink = function (e) {
         e.preventDefault()
-        window.location.href = "mailto:adeneyedaniel007@gmail.com"
+        window.location.replace("mailto:adeneyedaniel007@gmail.com")
     }
 
 
+    // Click functions on burger menu
+
+    // Click of home link
     const handleHomeClick = function () {
         setMobilePage("Home");
+        setPage("Work")
         navigate("/");
-        // navbarSection.classList.add("hidden")
-        // mobileMainContent.classList.remove("hidden")
-
+        // remove nav section
+        mobileNavRef.current.classList.add("hidden")
+        mobileMainRef.current.classList.remove("hidden")
 
     }
 
+    // Click of Work link
     const handleWorkClick = function () {
+        setMobilePage("Work");
+        setPage("Work")
+        navigate("/work");
+        // remove nav section
+        mobileNavRef.current.classList.add("hidden")
+        mobileMainRef.current.classList.remove("hidden")
 
     }
 
     const handleResumeClick = function () {
+        setMobilePage("Resume");
+        setPage("Resume")
+        navigate("/resume");
+        // remove nav section
+        mobileNavRef.current.classList.add("hidden")
+        mobileMainRef.current.classList.remove("hidden")
+    }
 
+    const handleExploreClick = function () {
+        setMobilePage("Work")
+        setPage("Work")
+        navigate("/work")
     }
 
 
@@ -83,7 +108,7 @@ function MobileHome({ mobilePage, setMobilePage }) {
     return (
         <div className='mobile text-white'>
             {/* Navigation */}
-            <div className="mobile-nav hidden relative h-screen">
+            <div ref={mobileNavRef} className="mobile-nav hidden relative h-screen">
                 {/* Close */}
                 <div className="nav-option">
                     <div className="nav-option-inner w-full flex justify-end py-5 px-3 md:px-10">
@@ -118,7 +143,7 @@ function MobileHome({ mobilePage, setMobilePage }) {
 
                     {/* Social connections */}
                     <div className="social-connections flex flex-col items-center pt-6">
-                        <div className="title w-max text-opacity-90 px-3 py-1 text-2xl font-cat-semibold">
+                        <div className="title w-max text-opacity-90 px-3 py-1 text-2xl font-cat-medium">
                             <p>
                                 Connect with me
                             </p>
@@ -155,7 +180,7 @@ function MobileHome({ mobilePage, setMobilePage }) {
             </div>
 
             {/* Main Content */}
-            <div className='mobile-main-content h-screen overflow-auto'>
+            <div ref={mobileMainRef} className='mobile-main-content h-screen overflow-auto'>
                 {/* Open */}
                 <div className="nav-option flex">
                     <div className="nickname flex justify-end py-5 px-4 md:px-10 text-white text-3xl text-opacity-90 font-cat-medium">
@@ -192,8 +217,8 @@ function MobileHome({ mobilePage, setMobilePage }) {
                                             </div>
                                         </div>
                                         {/* Explore btn */}
-                                        <div className="explore-btn flex justify-center mt-5">
-                                            <button className='flex items-center bg-secondaryBg px-7 py-4 text-lg font-cat-medium'>Explore My Work<span><img src={rightArrow} alt="right arrow" /></span></button>
+                                        <div ref={exploreBtnRef} onClick={handleExploreClick} className="explore-btn flex justify-center mt-5">
+                                            <button className='flex items-center bg-secondaryBg px-7 py-4 font-cat-medium'>Explore My Works<span><img src={rightArrow} className='h-4' alt="right arrow" /></span></button>
                                         </div>
 
                                         {/* footer */}
@@ -201,23 +226,23 @@ function MobileHome({ mobilePage, setMobilePage }) {
                                             {/* social links */}
                                             <div className="social-links flex px-3 py-2 w-max">
                                                 {/* Github */}
-                                                <Link to="https://github.com/Dahnie" className="mobile-github-link">
+                                                <a href="https://github.com/Dahnie" className="mobile-github-link">
                                                     <img src={githubAvatar} alt="github" className="h-7" />
-                                                </Link>
+                                                </a>
                                                 {/* Mail */}
                                                 <Link to="#" onClick={handleMailLink} className="mobile-mail-link">
                                                     <img src={mailAvatar} alt="mail" className="h-7 px-2 mx-6" />
                                                 </Link>
                                                 {/* LinkedIn */}
                                                 {/* TODO get the correct avatar */}
-                                                <Link to="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
+                                                <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
                                                     <img src={linkedinAvatar} alt="linkedin" className="h-7 pr-2 mr-6" />
-                                                </Link>
+                                                </a>
                                                 {/* Twitter */}
                                                 {/* TODO Get the correct twitter link */}
-                                                <Link to="https://github.com/Dahnie" className="mobile-twitter-link">
+                                                <a href="https://twitter.com/sage_dann" className="mobile-twitter-link">
                                                     <img src={twitterAvatar} alt="" className="h-7" />
-                                                </Link>
+                                                </a>
                                             </div>
                                             {/* Inspiration Text */}
                                             <div className="mobile-inspiration-text mt-2 text-white text-opacity-60 font-cat-medium">
@@ -229,10 +254,10 @@ function MobileHome({ mobilePage, setMobilePage }) {
                             )
                             // Else if page === Work, set to work
                             : mobilePage === "Work" ?
-                                <MobileWork />
+                                <MobileWork handleResumeClick={handleResumeClick} handleHomeClick={handleHomeClick} />
                                 // Else page === Resume, set to resume
                                 :
-                                <MobileResume />
+                                <MobileResume handleWorkClick={handleWorkClick} handleHomeClick={handleHomeClick} />
 
                     }
                 </div>

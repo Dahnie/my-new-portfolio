@@ -270,11 +270,11 @@ function Home() {
                                 <img src={profileImg} alt="avatar-img" />
                             </div>
                             {/* Github */}
-                            <Link to="https://github.com/Dahnie" ref={el => { githubLinkRef = el }} className="social-github flex items-center ml-5 mr-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
+                            <a href="https://github.com/Dahnie" ref={el => { githubLinkRef = el }} className="social-github flex items-center ml-5 mr-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
                                 <img className="relative -top-0.5" src={githubAvatar} alt="github" />
                                 <p className="px-1.5">Github</p>
                                 <img src={arrowUp} alt="arrow-up" />
-                            </Link>
+                            </a>
                             {/* Mail */}
                             <Link to="#" onClick={handleMailLink}
                                 ref={el => { mailLinkRef = el }} className="social-mail flex items-center mx-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
@@ -284,16 +284,16 @@ function Home() {
                             </Link>
 
                             {/* Twitter */}
-                            <div ref={el => { twitterLinkRef = el }} className="social-twitter flex items-center mx-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
+                            <a href='https://twitter.com/sage_dann' ref={el => { twitterLinkRef = el }} className="social-twitter flex items-center mx-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
                                 <img className="relative -top-0.5" src={twitterAvatar} alt="linkedin" />
                                 <p className="px-1.5">Twitter</p>
                                 <img src={arrowUp} alt="arrow-up" />
-                            </div>
+                            </a>
                         </div>
 
                         {/* Inspiration Section */}
                         <div ref={el => { inspirationTextRef = el }} className="inspiration-text text-white text-opacity-60 font-cat-medium py-5">
-                            <p>Inspired by <span className="text-white text-opacity-100">kadet</span>
+                            <p>Inspired by <a href="https://twitter.com/kadetXx" className="text-white text-opacity-100">kadet</a>
                             </p>
                         </div>
                     </div>
@@ -307,7 +307,7 @@ function Home() {
 
                 {/* Container for mobile view */}
                 <div className="mobile-container lg:hidden bg-primaryBg">
-                    <MobileHome mobilePage={mobilePage} setMobilePage={setMobilePage} />
+                    <MobileHome page={page} setPage={setPage} mobilePage={mobilePage} setMobilePage={setMobilePage} />
                 </div>
 
             </div>
