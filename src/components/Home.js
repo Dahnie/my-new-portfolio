@@ -11,9 +11,10 @@ import profileImg from "../assets/img/profile-img.png";
 import githubAvatar from "../assets/img/github-avatar.svg";
 import mailAvatar from "../assets/img/mail-avatar.svg";
 import twitterAvatar from "../assets/img/twitter-avatar.svg";
+import linkedinAvatar from "../assets/img/linkedin-avatar.svg";
 import arrowUp from "../assets/img/arrow-up.svg";
-import navClose from "../assets/img/nav-close.svg";
-import navBurger from "../assets/img/nav-burger.svg";
+import MobileHome from './mobile/MobileHome';
+
 
 
 
@@ -22,9 +23,10 @@ function Home() {
 
     let navigate = useNavigate()
     let location = useLocation()
-    // State that handles the dynamic page routing
+    // State that handles the dynamic web page routing
     const [page, setPage] = useState("Work")
-    const [navOpen, setNavOpen] = useState(false)
+    // State that handles the dynamic mobile page routing while respecting the web state
+    const [mobilePage, setMobilePage] = useState("Home")
     const workRef = useRef(null)
     const resumeRef = useRef(null)
     // Refs for animations using gsap
@@ -90,6 +92,7 @@ function Home() {
     const handleWorkActiveEffect = function (e) {
         e.stopPropagation()
         setPage("Work")
+        setMobilePage("Work")
         // Change the url on active
         window.history.replaceState(null, "Resume | Daniel Adeneye", "/work")
         if (resumeRef.current.classList.contains("active-menu")) {
@@ -105,6 +108,7 @@ function Home() {
     const handleResumeActiveEffect = function (e) {
         e.stopPropagation()
         setPage("Resume")
+        setMobilePage("Resume")
         // chanhe the url on active
         window.history.replaceState(null, "Work | Daniel Adeneye", "/resume")
         if (workRef.current.classList.contains("active-menu")) {
@@ -116,30 +120,46 @@ function Home() {
         }
     }
 
+    // Handle mail link actions
     const handleMailLink = function (e) {
         e.preventDefault()
         window.location.href = "mailto:adeneyedaniel007@gmail.com"
     }
 
+
     // adds the hover event listenerr on the menu navigation
     useEffect(() => {
         // WORK HANDLERS START
 
-
         // Check value of route to determine page and handle effect
-        if (location.pathname === "/" || location.pathname === "/work") {
+        if (location.pathname === "/") {
             setPage("Work")
+            // Sets the state for the mobile page view
+            setMobilePage("Home")
             workRef.current.classList.add("active-menu")
             resumeRef.current.classList.remove("active-menu")
             // Handle line effect on load
             gsap.to(".work-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
-        } else if (location.pathname === "/resume") {
+        } else if (location.pathname === "/work") {
+            setPage("Work")
+            // Sets the state for the mobile page view
+            setMobilePage("Work")
+            workRef.current.classList.add("active-menu")
+            resumeRef.current.classList.remove("active-menu")
+            // Handle line effect on load
+            gsap.to(".work-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
+
+        }
+        else if (location.pathname === "/resume") {
             setPage("Resume")
+            // Sets the state for the mobile page view
+            setMobilePage("Resume")
             resumeRef.current.classList.add("active-menu")
             workRef.current.classList.remove("active-menu")
             // Handle line effect on load
             gsap.to(".resume-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
         }
+
 
         // Introduction VARS
         const firstIntroductionLine = introductionRef.firstElementChild;
@@ -179,42 +199,8 @@ function Home() {
         // WEB HANDLERS END
 
         // MOBILE HANDLERS START
-        const navOpen = document.querySelector(".nav-open")
-        const navClose = document.querySelector(".nav-close")
-        const navbarSection = document.querySelector(".nav-content")
-        const mobileMainContent = document.querySelector(".mobile-main-content")
 
-        // On Nav Open
-        navOpen.addEventListener("click", (e) => {
-            e.stopPropagation();
-            // Handles burger toggle
-            navOpen.parentElement.classList.remove("flex")
-            navOpen.parentElement.classList.toggle("hidden")
-            navClose.parentElement.classList.add("flex")
-            navClose.parentElement.classList.toggle("hidden")
-            setNavOpen(true);
-            // Open nav content
-            navbarSection.classList.remove("hidden")
-            mobileMainContent.classList.add("hidden")
-
-
-
-        })
-
-        // On Nav Close
-        navClose.addEventListener("click", (e) => {
-            e.stopPropagation();
-            // Handles burger toggle
-            navClose.parentElement.classList.remove("flex")
-            navClose.parentElement.classList.toggle("hidden")
-            navOpen.parentElement.classList.add("flex")
-            navOpen.parentElement.classList.toggle("hidden")
-            setNavOpen(false)
-            // Close nav  content
-            navbarSection.classList.add("hidden")
-            mobileMainContent.classList.remove("hidden")
-        })
-
+        // Since Home is completely different from Work in mobile page, this is highly needed to keep track
 
 
         // MOBILE HANDLERS END
@@ -320,105 +306,9 @@ function Home() {
                 </div>
 
                 {/* Container for mobile view */}
-                <div className="mobile-container lg:hidden bg-primaryBg h-screen">
-                    <div className='mobile text-white'>
-                        {/* Navigation */}
-                        <div className="mobile-nav relative pt-8">
-                            {/* Close */}
-                            <div className="nav-option">
-                                <div className="nav-option-inner w-full hidden justify-end absolute py-5 px-10">
-                                    <img className='nav-close py-3 px-3' src={navClose} alt="cancel" />
-                                </div>
-                            </div>
-
-                            <div className="nav-content hidden">
-                                {/* Nav Links */}
-                                <nav className="nav-content-inner pt-40 flex flex-col items-center">
-                                    {/* Nav home */}
-                                    <div className='nav-home w-max px-10 py-3 text-2xl text-white text-opacity-60'>
-                                        <p>
-                                            Home
-                                        </p>
-                                    </div>
-
-                                    {/* Nav work */}
-                                    <div className='nav-work w-max my-3 px-10 py-3 text-2xl text-white text-opacity-60'>
-                                        <p>
-                                            Work
-                                        </p>
-                                    </div>
-
-                                    {/* Nav resume */}
-                                    <div className='nav-resume w-max mb-3 px-10 py-3 text-2xl text-white text-opacity-60'>
-                                        <p>
-                                            Résumé
-                                        </p>
-                                    </div>
-                                </nav>
-
-                                {/* Social connections */}
-                                <div className="social-connections flex flex-col items-center pt-6">
-                                    <div className="title w-max text-opacity-90 px-3 py-1 text-2xl font-cat-semibold">
-                                        <p>
-                                            Connect with me
-                                        </p>
-                                    </div>
-
-                                    {/* social links */}
-                                    <div className="social-links flex px-3 py-2 w-max">
-                                        {/* Github */}
-                                        <Link to="https://github.com/Dahnie" className="mobile-github-link">
-                                            <img src={githubAvatar} alt="github" className="h-7" />
-                                        </Link>
-                                        {/* Mail */}
-                                        <Link to="#" onClick={handleMailLink} className="mobile-mail-link">
-                                            <img src={mailAvatar} alt="mail" className="h-7 px-2 mx-2" />
-                                        </Link>
-                                        {/* LinkedIn */}
-                                        {/* TODO get the correct avatar */}
-                                        <Link to="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
-                                            <img src={twitterAvatar} alt="linkedin" className="h-7 pr-2 mr-2" />
-                                        </Link>
-                                        {/* Twitter */}
-                                        {/* TODO Get the correct twitter link */}
-                                        <Link to="https://github.com/Dahnie" className="mobile-twitter-link">
-                                            <img src={twitterAvatar} alt="" className="h-7" />
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Main Content */}
-                        <div className='mobile-main-content'>
-                            {/* Open */}
-                            <div className="nav-option">
-                                <div className="nav-option-inner w-full flex justify-end py-5 px-10">
-                                    <img className='nav-open py-3 px-3' src={navBurger} alt="open" />
-                                </div>
-                            </div>
-
-                            <div className="main-content-inner mt-10">
-                                <div className="mobile-bio  flex flex-col items-center">
-                                    <div className="profile-img h-40 w-40 rounded-full overflow-hidden">
-                                        <img src={profileImg} alt="avatar-img" />
-                                    </div>
-                                    <div className="name text-3xl font-cat-medium flex justify-center pt-7 pb-10">
-                                        <p>
-                                            Hello, I'm Daniel Adeneye.
-                                        </p>
-                                    </div>
-                                    <div className="mobile-description w-4/6">
-                                        <p className='text-center'>
-                                            I'm a <span className=' text-white text-opacity-60 mobile-bio-text-1'>frontend developer</span>. I build high quality and modern <span className='mobile-bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user experieces. I am currently learning <span className="mobile-bio-text-3 text-white text-opacity-60">server-side development</span> and I am also deeply interested in <span className='bio-text-4 text-white text-opacity-60'>cybersecurity</span>.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="mobile-container lg:hidden bg-primaryBg">
+                    <MobileHome mobilePage={mobilePage} setMobilePage={setMobilePage} />
                 </div>
-
 
             </div>
         </div>

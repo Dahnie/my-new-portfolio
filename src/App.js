@@ -9,12 +9,13 @@ function App() {
     // Show a spinner while the profile is loading
     <Router>
       <Routes>
+        {/* Not found */}
+        <Route path="*" element={<>Not found buddy</>} />
+        {/* Home */}
         <Route path="/" element={<Home />} />
-      </Routes>
-      <Routes>
+        {/* Resume */}
         <Route path="/resume" element={<Home />} />
-      </Routes>
-      <Routes>
+        {/* Work */}
         <Route path="/work" element={<Home />} />
       </Routes>
     </Router>

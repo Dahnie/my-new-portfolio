@@ -242,16 +242,18 @@ function Work() {
                                 {project.description}
                             </div>
                             <div className="project-links flex lg:text-xs 2xl:text-sm text-white text-opacity-60 ">
-                                <Link to={project.githubLink} className="github-link flex pr-4">
+                                {/* Used ancchor tags because of external link, check if solution to v6 external routing exists later */}
+                                <a href={project.githubLink} className="github-link flex pr-4">
                                     <img className="relative -top-0.5" src={githubAvatar} alt="github-icon" />
                                     <p className="px-1">Code</p>
-                                </Link>
+                                </a>
+                                {/* Used ancchor tags because of external link, check if solution to v6 external routing exists later */}
 
                                 {project.isProjectLive &&
-                                    (<Link to={project.projectLink} className="live-link flex">
+                                    (<a href={project.projectLink} className="live-link flex">
                                         <img className="relative -top-0.5" src={eyeIcon} alt="eye-icon" />
                                         <p className="px-1">View project</p>
-                                    </Link>)
+                                    </a>)
                                 }
                             </div>
                         </div>
@@ -284,25 +286,24 @@ function Work() {
                                 </div>
                                 <div className="project-links flex lg:text-xs 2xl:text-sm text-white text-opacity-60 pt-12 pb-2">
                                     {/* Github */}
-                                    <div className="github-link flex items-center pr-2.5 xl:pr-4">
+                                    <a href={project.githubLink} className="github-link flex items-center pr-2.5 xl:pr-4">
                                         <img className="relative lg:h-4 xl:h-max xl:-top-0.5" src={githubAvatar} alt="github-icon" />
                                         <p className="px-1">Code</p>
-                                    </div>
+                                    </a>
                                     {/* Live */}
                                     {project.isProjectLive &&
-                                        (<div className="live-link flex items-center">
+                                        (<a href={project.projectLink} className="live-link flex items-center">
                                             <img className="relative lg:h-4 xl:h-max xl:-top-0.5" src={eyeIcon} alt="eye-icon" />
                                             <p className="px-1">View project</p>
-                                        </div>)
+                                        </a>)
                                     }
                                 </div>
                             </div>
                         ))}
                     </Masonry>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
-
-export default Work
+export default Work;
