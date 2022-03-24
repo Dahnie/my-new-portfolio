@@ -14,6 +14,8 @@ import MobileResume from './MobileResume';
 
 
 function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWorkRouteButton }) {
+
+    const tl = gsap.timeline();
     const navigate = useNavigate()
     const location = useLocation();
     const mobileNavRef = useRef(null);
@@ -82,6 +84,14 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
         const navClose = document.querySelector(".nav-close")
         const navbarSection = document.querySelector(".mobile-nav")
         const mobileMainContent = document.querySelector(".mobile-main-content")
+
+        // Handles mobile bio text animation
+        setInterval(() => {
+            tl
+                .to([".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
+                .to([".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
+
+        }, 6000)
 
 
         // On Nav Open
@@ -220,7 +230,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
                                             </div>
                                             <div className="mobile-description h-max overflow-hidden w-3/4 md:w-4/6 mt-2 ">
                                                 <p className='text-center text-white text-opacity-60 text-sm'>
-                                                    I'm a <span className=' text-white text-opacity-60 mobile-bio-text-1'>frontend developer</span>. I build high quality and modern <span className='mobile-bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user <span className='mobile-bio-text-3 text-white text-opacity-60'>experieces</span>. I am <span className="mobile-bio-text-4 text-white text-opacity-60">currently learning</span> server-side development and I am also deeply interested in <span className='bio-text-5 text-white text-opacity-60'>cybersecurity</span>.
+                                                    I'm a <span className=' text-white text-opacity-60 mobile-bio-text-1'>frontend developer</span>. I build high quality and modern <span className='mobile-bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user <span className='mobile-bio-text-3 text-white text-opacity-60'>experieces</span>. I am <span className="mobile-bio-text-4 text-white text-opacity-60">currently learning</span> server-side development and I am also deeply interested in <span className='mobile-bio-text-5 text-white text-opacity-60'>cybersecurity</span>.
                                                 </p>
                                             </div>
                                         </div>

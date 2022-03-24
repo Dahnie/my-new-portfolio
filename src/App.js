@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./assets/styles/css/App.css"
 import Home from "./components/Home"
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         {/* Not found */}
-        <Route path="*" element={<>Not found buddy</>} />
+        <Route path="*" element={<NotFound />} />
         {/* Home */}
         <Route path="/" element={<Home />} />
         {/* Resume */}
