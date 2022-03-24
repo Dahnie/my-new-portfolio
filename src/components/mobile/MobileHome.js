@@ -108,7 +108,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
     return (
         <div className='mobile text-white'>
             {/* Navigation */}
-            <div ref={mobileNavRef} className="mobile-nav hidden relative h-screen">
+            <div ref={mobileNavRef} className="mobile-nav hidden relative h-screen overflow-hidden">
                 {/* Close */}
                 <div className="nav-option">
                     <div className="nav-option-inner w-full flex justify-end py-5 px-3 md:px-10">
