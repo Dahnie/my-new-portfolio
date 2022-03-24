@@ -108,9 +108,13 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
     return (
         <div className='mobile text-white'>
             {/* Navigation */}
-            <div ref={mobileNavRef} className="mobile-nav hidden relative h-max overflow-hidden">
+            <div ref={mobileNavRef} className="mobile-nav hidden relative h-screen overflow-hidden">
                 {/* Close */}
-                <div className="nav-option">
+                <div className="nav-option flex">
+                    <div className="nickname flex justify-end py-5 px-4 md:px-10 text-white text-3xl text-opacity-90 font-cat-medium">
+                        <p>Dan.</p>
+                    </div>
+
                     <div className="nav-option-inner w-full flex justify-end py-5 px-3 md:px-10">
                         <img className='nav-close py-3 px-3' src={navClose} alt="cancel" />
                     </div>
@@ -118,16 +122,16 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
 
                 <div className="nav-content">
                     {/* Nav Links */}
-                    <nav className="nav-content-inner pt-40 flex flex-col items-center">
+                    <nav className="nav-content-inner pt-8 flex flex-col items-center">
                         {/* Nav home */}
-                        <div onClick={handleHomeClick} className='nav-home w-max px-10 py-3 text-2xl text-white text-opacity-60 bg-red-500'>
+                        <div onClick={handleHomeClick} className='nav-home w-max px-10 py-3 text-2xl text-white text-opacity-60'>
                             <p>
                                 Home
                             </p>
                         </div>
 
                         {/* Nav work */}
-                        <div onClick={handleWorkClick} className='nav-work w-max my-3 px-10 py-3 text-2xl text-white text-opacity-60 bg-green-700'>
+                        <div onClick={handleWorkClick} className='nav-work w-max my-3 px-10 py-3 text-2xl text-white text-opacity-60'>
                             <p>
                                 Work
                             </p>
@@ -180,7 +184,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
             </div>
 
             {/* Main Content */}
-            <div ref={mobileMainRef} className='mobile-main-content h-screen overflow-hidden'>
+            <div ref={mobileMainRef} className={`mobile-main-content h-screen ${mobilePage === "Home" ? "overflow-hidden" : "overflow-auto"}`}>
                 {/* Open */}
                 <div className="nav-option flex">
                     <div className="nickname flex justify-end py-5 px-4 md:px-10 text-white text-3xl text-opacity-90 font-cat-medium">
