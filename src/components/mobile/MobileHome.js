@@ -180,7 +180,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
             </div>
 
             {/* Main Content */}
-            <div ref={mobileMainRef} className='mobile-main-content h-screen overflow-auto'>
+            <div ref={mobileMainRef} className='mobile-main-content h-screen overflow-hidden'>
                 {/* Open */}
                 <div className="nav-option flex">
                     <div className="nickname flex justify-end py-5 px-4 md:px-10 text-white text-3xl text-opacity-90 font-cat-medium">
@@ -222,7 +222,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
                                         </div>
 
                                         {/* footer */}
-                                        <div className="footer w-full absolute bottom-5 flex justify-center">
+                                        <div className="footer w-full absolute bottom-4 flex justify-center">
                                             <div className="footer-inner w-max flex flex-col items-center">
                                                 {/* social links */}
                                                 <div className="social-links flex px-3 py-2 w-max">
@@ -247,7 +247,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
                                                 </div>
                                                 {/* Inspiration Text */}
                                                 <div className="mobile-inspiration-text mt-2 text-white text-opacity-60 font-cat-medium">
-                                                    <p>Inspired by <span className='text-white text-opacity-100'>Kadet</span></p>
+                                                    <p>Inspired by <a href="https://twitter.com/kadetXx" className='text-white text-opacity-100'>Kadet</a></p>
                                                 </div>
                                             </div>
                                         </div>
