@@ -208,7 +208,7 @@ function MobileWork({ handleResumeClick, handleHomeClick }) {
                     </a>
                 </div>
                 {/* Inspiration Text */}
-                <div className="mobile-inspiration-text mt-3 text-xs text-white text-opacity-100 font-cat-medium">
+                <div className="mobile-inspiration-text mt-3 text-xs text-white text-opacity-60 font-cat-medium">
                     <p>Inspired by <a href='https://twitter.com/kadetXx' className='text-white text-sm text-opacity-100'>Kadet</a></p>
                 </div>
             </div>
