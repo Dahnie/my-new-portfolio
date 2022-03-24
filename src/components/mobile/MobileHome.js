@@ -67,6 +67,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
         setMobilePage("Work")
         setPage("Work")
         navigate("/work")
+        window.location.replace("/work")
     }
 
 

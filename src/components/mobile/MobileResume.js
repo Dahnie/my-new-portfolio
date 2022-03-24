@@ -27,8 +27,8 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink }) {
 
     }, [])
     return (
-        <div className="mobile-resume pl-8 md:pl-14">
-            <div id='resume-section' className='resume w-11/12 pb-8'>
+        <div className="mobile-resume">
+            <div id='resume-section' className='resume w-11/12 pb-8 pl-8 md:pl-14'>
                 <div className="resume-inner bg-secondaryBg py-8 px-7">
                     <div ref={el => { nameRef = el }} className="name mb-1 h-10 overflow-hidden">
                         <div className='name-inner font-cat-medium text-white text-opacity-90 text-4xl '>

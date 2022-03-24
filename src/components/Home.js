@@ -20,6 +20,11 @@ import MobileHome from './mobile/MobileHome';
 
 function Home() {
 
+    // A function that tracks if the browser back or front button ispressed and reloads the page(Solves in-page routing bug where the route changees and page doesnt load)
+    window.onpopstate = function (event) {
+        window.location.reload();
+    };
+
 
     let navigate = useNavigate()
     let location = useLocation()
