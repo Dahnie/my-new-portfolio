@@ -1,7 +1,6 @@
-import React, { Suspense } from "react"
+import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./assets/styles/css/App.css"
-import Loader from "./components/Loader";
 import Home from "./components/Home"
 
 function App() {

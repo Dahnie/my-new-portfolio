@@ -17,12 +17,6 @@ import MobileHome from './mobile/MobileHome';
 
 function Home() {
 
-    // TODO Check for an event listener to listen to change in url pathname
-    // BUG Temporary
-    // A function that tracks if the browser back or front button ispressed and reloads the page(Solves in-page routing bug where the route changees and page doesnt load)
-    window.onpopstate = function (event) {
-        window.location.reload();
-    };
 
     const navigate = useNavigate()
     let location = useLocation()
@@ -136,16 +130,12 @@ function Home() {
         navigate("/work")
     }
 
-
-
-    // adds the hover event listenerr on the menu navigation
-    useEffect(() => {
-        // WORK HANDLERS START
-
-        // Check value of route to determine page and handle effect
+    // Function that checks the value of route to determine page and handle effect
+    const handlePageChangeOnRouteChange = function () {
         if (location.pathname === "/") {
             setPage("Work")
             // Sets the state for the mobile page view
+            // Since Home is completely different from Work in mobile page, this is highly needed to keep track
             setMobilePage("Home")
             workRef.current.classList.add("active-menu")
             resumeRef.current.classList.remove("active-menu")
@@ -170,7 +160,14 @@ function Home() {
             // Handle line effect on load
             gsap.to(".resume-line", { duration: 0.4, css: { width: "72px", opacity: "1" } })
         }
+    }
 
+
+
+    // adds the hover event listenerr on the menu navigation
+    useEffect(() => {
+        // WORK HANDLERS START
+        handlePageChangeOnRouteChange()
 
         // Introduction VARS
         const firstIntroductionLine = introductionRef.firstElementChild;
@@ -188,8 +185,8 @@ function Home() {
         // Handles bio text animation
         setInterval(() => {
             tl
-                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
-                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
+                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
+                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
 
         }, 6000)
 
@@ -209,23 +206,25 @@ function Home() {
 
         // WEB HANDLERS END
 
-        // MOBILE HANDLERS START
-
-        // Since Home is completely different from Work in mobile page, this is highly needed to keep track
-
-
-        // MOBILE HANDLERS END
-
         return () => {
             // Cleanup the event listeners
-            workRef.current.removeEventListener("mouseover", handleWorkHoverOn)
-            workRef.current.removeEventListener("mouseout", handleWorkHoverOff)
-            resumeRef.current.removeEventListener("mouseover", handleResumeHoverOn)
-            resumeRef.current.removeEventListener("mouseout", handleResumeHoverOff)
+            // workRef.current.removeEventListener("mouseover", handleWorkHoverOn)
+            // workRef.current.removeEventListener("mouseout", handleWorkHoverOff)
+            // resumeRef.current.removeEventListener("mouseover", handleResumeHoverOn)
+            // resumeRef.current.removeEventListener("mouseout", handleResumeHoverOff)
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    // Handling URL query change on click of link
+
+    // The use effect tracks if the browser back or front button is pressed and reloads the page(Solves in-page routing bug where the route changees and page doesnt load)
+    // The useEffect is dependent on change of the browwser location(pathname)
+    useEffect(() => {
+        handlePageChangeOnRouteChange()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location])
+
 
 
 

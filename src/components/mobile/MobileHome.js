@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Link, useNavigate } from "react-router-dom"
+import React, { useEffect, useRef } from 'react'
+import { Link, useNavigate, useLocation } from "react-router-dom"
+import { gsap } from "gsap"
 import profileImg from "../../assets/img/profile-img.png";
 import githubAvatar from "../../assets/img/github-avatar.svg";
 import mailAvatar from "../../assets/img/mail-avatar.svg";
@@ -14,10 +15,10 @@ import MobileResume from './MobileResume';
 
 function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWorkRouteButton }) {
     const navigate = useNavigate()
+    const location = useLocation();
     const mobileNavRef = useRef(null);
     const mobileMainRef = useRef(null);
-    const exploreBtnRef = useRef(null)
-    // const [navOpen, setNavOpen] = useState(false)
+
 
 
 
@@ -70,54 +71,41 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
     }
 
 
-
-
-    let screenHeight = window.innerHeight
-    // alert(height)
+    useEffect(() => {
+        // Burger animation
+        gsap.to(".mobile-nav-content", { duration: 0, y: -60, opacity: 0 })
+    }, [location])
 
     useEffect(() => {
 
-
-
-
         const navOpen = document.querySelector(".nav-open")
         const navClose = document.querySelector(".nav-close")
-        // const  = document.querySelector(".nav-content")
         const navbarSection = document.querySelector(".mobile-nav")
         const mobileMainContent = document.querySelector(".mobile-main-content")
+
 
         // On Nav Open
         navOpen.addEventListener("click", (e) => {
             e.stopPropagation();
             // Handles burger toggle
             // Open nav content
-            // setNavOpen(true);
-            navbarSection.classList.remove("hidden")
-            mobileMainContent.classList.add("hidden")
-
-            setInterval(() => {
-                if (navbarSection.offsetHeight < screenHeight) {
-                    navbarSection.style.height = `${navbarSection.offsetHeight + 1}px`;
-                    console.log(navbarSection.offsetHeight, screenHeight);
-                } else {
-                    clearInterval()
-                }
-            }, 1);
-            console.log("added 1", navbarSection.offsetHeight);
-
-
-
+            navbarSection.classList.remove("hidden");
+            mobileMainContent.classList.add("hidden");
+            // Burger animation
+            gsap.to(".mobile-nav-content", { duration: 0.5, y: 5, opacity: 1, ease: "power3.easeOut" })
+            // .from(".mobile-nav", { duration: 0, css: { visibility: "hidden" } })            
 
         })
 
         // On Nav Close
         navClose.addEventListener("click", (e) => {
             e.stopPropagation();
-            // setNavOpen(false)
             // Handles burger toggle
             // Close nav  content
             navbarSection.classList.add("hidden")
-            mobileMainContent.classList.remove("hidden")
+            mobileMainContent.classList.remove("hidden");
+            // Burger animation
+            gsap.to(".mobile-nav-content", { duration: 0, y: -60, opacity: 0 })
 
         })
 
@@ -125,7 +113,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
     return (
         <div className='mobile text-white'>
             {/* Navigation */}
-            <div ref={mobileNavRef} className="mobile-nav hidden relative overflow-hidden" style={{ height: 0 }}>
+            <div ref={mobileNavRef} className="mobile-nav hidden h-screen relative overflow-hidden">
                 {/* Close */}
                 <div className="nav-option flex">
                     <div className="nickname flex justify-end py-5 px-4 md:px-10 text-white text-3xl text-opacity-90 font-cat-medium">
@@ -137,9 +125,9 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
                     </div>
                 </div>
 
-                <div className="nav-content">
+                <div className="mobile-nav-content opacity-0">
                     {/* Nav Links */}
-                    <nav className="nav-content-inner pt-8 flex flex-col items-center">
+                    <nav className="nav-content-inner flex flex-col items-center">
                         {/* Nav home */}
                         <div onClick={handleHomeClick} className='nav-home w-max px-10 py-3 text-2xl text-white text-opacity-60'>
                             <p>
@@ -191,8 +179,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
 
                             {/* Twitter */}
                             {/* Used anchor tags because of external link, check if solution to v6 external routing exists later */}
-                            {/* TODO Get the correct twitter link */}
-                            <a href="https://github.com/Dahnie" className="mobile-twitter-link">
+                            <a href="https://twitter.com/sage_dann" className="mobile-twitter-link">
                                 <img src={twitterAvatar} alt="" className="h-7" />
                             </a>
                         </div>
@@ -223,23 +210,23 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
                                     {/* Mobile Home */}
                                     <div className="mobile-home-inner">
                                         <div className="mobile-bio  flex flex-col items-center">
-                                            <div className="profile-img h-40 w-40 rounded-full overflow-hidden">
+                                            <div className="mobile-profile-img h-40 w-40 rounded-full overflow-hidden">
                                                 <img src={profileImg} alt="avatar-img" />
                                             </div>
-                                            <div className="name text-2xl md:text-3xl font-cat-medium flex justify-center pt-7">
+                                            <div className="mobile-name h-max overflow-hidden text-2xl md:text-3xl font-cat-medium flex justify-center mt-7">
                                                 <p>
                                                     Hello, I'm Daniel Adeneye.
                                                 </p>
                                             </div>
-                                            <div className="mobile-description w-3/4 md:w-4/6 mt-2 md:mt-5">
+                                            <div className="mobile-description h-max overflow-hidden w-3/4 md:w-4/6 mt-2 ">
                                                 <p className='text-center text-white text-opacity-60 text-sm'>
                                                     I'm a <span className=' text-white text-opacity-60 mobile-bio-text-1'>frontend developer</span>. I build high quality and modern <span className='mobile-bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user <span className='mobile-bio-text-3 text-white text-opacity-60'>experieces</span>. I am <span className="mobile-bio-text-4 text-white text-opacity-60">currently learning</span> server-side development and I am also deeply interested in <span className='bio-text-5 text-white text-opacity-60'>cybersecurity</span>.
                                                 </p>
                                             </div>
                                         </div>
                                         {/* Explore btn */}
-                                        <div ref={exploreBtnRef} onClick={handleExploreClick} className="explore-btn flex justify-center mt-5">
-                                            <button className='flex items-center bg-secondaryBg px-7 py-4 font-cat-medium'>Explore My Works<span><img src={rightArrow} className='h-4' alt="right arrow" /></span></button>
+                                        <div className="explore-btn flex justify-center mt-5">
+                                            <button onClick={handleExploreClick} className='flex items-center bg-secondaryBg px-7 py-4 font-cat-medium'>Explore My Works<span><img src={rightArrow} className='h-3.5 md:h-4 relative' alt="right arrow" /></span></button>
                                         </div>
 
                                         {/* footer */}

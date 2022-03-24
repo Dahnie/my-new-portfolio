@@ -214,6 +214,7 @@ function Work() {
         })
 
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <div ref={el => (workSectionRef = el)} id="work-section" className='work overflow-auto h-screen pt-20 w-full'>

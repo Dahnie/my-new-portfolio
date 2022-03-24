@@ -19,15 +19,11 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
     let experienceRef = useRef(null);
     let projectsRef = useRef(null);
 
-    // const myFUnc = function (){
-    //     window.location.
-    // }
-
 
     useEffect(() => {
-        tl
-            .from([nameRef.children, titleRef.children, bioRef.children], { duration: 1, y: 75, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.25 }, "<.8")
-            .from([coreSkillsRef, familiarSkillsRef, onTheJobSkillsRef, toolsSkillsRef, experienceRef, projectsRef], { duration: 1, delay: .5, x: 150, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.25 }, "<1")
+        // tl
+        //     .from([nameRef.children, titleRef.children, bioRef.children], { duration: 1, y: 75, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.25 }, "<.8")
+        //     .from([coreSkillsRef, familiarSkillsRef, onTheJobSkillsRef, toolsSkillsRef, experienceRef, projectsRef], { duration: 1, delay: .5, x: 150, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.25 }, "<1")
 
     }, [])
     return (
