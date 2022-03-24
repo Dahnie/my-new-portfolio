@@ -1,17 +1,14 @@
 import React from 'react'
 import { useRef, useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { gsap } from "gsap";
 import Work from "./Work";
 import Resume from "./Resume";
 import "../assets/styles/css/App.css";
-import smallLine from "../assets/img/small-line.svg";
-import longLine from "../assets/img/long-line.svg";
 import profileImg from "../assets/img/profile-img.png";
 import githubAvatar from "../assets/img/github-avatar.svg";
 import mailAvatar from "../assets/img/mail-avatar.svg";
 import twitterAvatar from "../assets/img/twitter-avatar.svg";
-import linkedinAvatar from "../assets/img/linkedin-avatar.svg";
 import arrowUp from "../assets/img/arrow-up.svg";
 import MobileHome from './mobile/MobileHome';
 
@@ -20,13 +17,14 @@ import MobileHome from './mobile/MobileHome';
 
 function Home() {
 
+    // TODO Check for an event listener to listen to change in url pathname
+    // BUG Temporary
     // A function that tracks if the browser back or front button ispressed and reloads the page(Solves in-page routing bug where the route changees and page doesnt load)
     window.onpopstate = function (event) {
         window.location.reload();
     };
 
-
-    let navigate = useNavigate()
+    const navigate = useNavigate()
     let location = useLocation()
     // State that handles the dynamic web page routing
     const [page, setPage] = useState("Work")
@@ -130,6 +128,14 @@ function Home() {
         e.preventDefault()
         window.location.href = "mailto:adeneyedaniel007@gmail.com"
     }
+
+    // Handle work link below on the footer of resume(both web and mobile)
+    const handleWorkRouteButton = function () {
+        setMobilePage("Work")
+        setPage("Work")
+        navigate("/work")
+    }
+
 
 
     // adds the hover event listenerr on the menu navigation
@@ -297,8 +303,8 @@ function Home() {
                         </div>
 
                         {/* Inspiration Section */}
-                        <div ref={el => { inspirationTextRef = el }} className="inspiration-text text-white text-opacity-60 font-cat-medium py-5">
-                            <p>Inspired by <a href="https://twitter.com/kadetXx" className="text-white text-opacity-100">kadet</a>
+                        <div ref={el => { inspirationTextRef = el }} className="inspiration-text text-white text-opacity-60 font-cat-light py-5">
+                            <p>Inspired by <a href="https://twitter.com/kadetXx" className="text-white font-cat-light text-opacity-100">kadet</a>
                             </p>
                         </div>
                     </div>
@@ -306,7 +312,7 @@ function Home() {
                     {/* Right dynamic side  */}
                     <div className="right sub-content col-span-6 text-white text-opacity-90 5xl:pr-28">
                         {/* Dynamic pages */}
-                        {page === "Work" ? <Work /> : <Resume />}
+                        {page === "Work" ? <Work /> : <Resume handleWorkRouteButton={handleWorkRouteButton} />}
                     </div>
                 </div>
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import Masonry from 'react-masonry-css'
 import { gsap } from 'gsap';
 import CSSRulePlugin from "gsap/CSSRulePlugin"
@@ -94,13 +93,10 @@ function Work() {
     ]
 
     gsap.registerPlugin(CSSRulePlugin);
-    let feauturedProjectsReveal = CSSRulePlugin.getRule(".project::after")
     let featuredTitleRef = useRef(null)
     let featuredProjectsRef = useRef(null)
-    let otherTitleRef = useRef(null)
     let otherWorksRef = useRef(null)
     let workSectionRef = useRef(null)
-    let masonryRef = useRef(null)
 
     // Gsap animations
     const tl = gsap.timeline();
@@ -141,20 +137,16 @@ function Work() {
 
 
         tl
-            .to(workSectionRef, { css: { visibility: "visible" } })
+            .to(workSectionRef, { css: { visibility: "visible" }, delay: 0.6 })
             .from(featuredTitleRef, { duration: 0.7, opacity: 0, y: -30 })
             .from([featuredProjectsRef.firstChild, featuredProjectsRef.lastChild], {
                 duration: 1, x: 200, y: -200, z: -50, rotation: 60, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.2
             }, "<.3")
             .from(otherWorksRef, { duration: 1, opacity: 0, y: 100 })
 
-        // .to(workSectionRef, { duration: 0, css: { visibility: "visible" } })
-        // .to(featuredProjectsRef, { duration: 0, css: { visibility: "visible" }, delay: .3 })
 
 
-
-
-        // FEAUTIuRED
+        // FEAUTURED
         const projects = document.querySelectorAll(".project");
         projects.forEach((project) => {
             project.addEventListener("mouseover", (e) => {
@@ -263,12 +255,11 @@ function Work() {
 
             {/* Other works */}
             <div ref={el => { otherWorksRef = el }} className="other-works my-14 px-14 xl:px-12 4xl:pr-24 5xl:pr-28">
-                <div ref={el => { otherTitleRef = el }} className="title text-white text-opacity-40 text-sm font-cat-semibold pb-5">OTHERS</div>
+                <div className="title text-white text-opacity-40 text-sm font-cat-semibold pb-5">OTHERS</div>
                 {/* Mapping all the projects in the array out */}
                 <div className="projects-masonry ">
                     {/* Used react-masonry to create the unbalanced effect on the grid */}
                     <Masonry
-                        ref={el => (masonryRef = el)}
                         breakpointCols={2}
                         className="my-masonry-grid"
                         columnClassName="my-masonry-grid_column">

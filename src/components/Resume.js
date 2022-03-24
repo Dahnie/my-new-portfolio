@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 
 
-function Resume() {
+function Resume({ handleWorkRouteButton }) {
     const tl = gsap.timeline();
     let nameRef = useRef(null);
     let titleRef = useRef(null);
@@ -16,6 +16,9 @@ function Resume() {
     let experienceRef = useRef(null);
     let projectsRef = useRef(null);
 
+    // Functions
+    // handle Work Route Button
+
 
     useEffect(() => {
         tl
@@ -26,12 +29,12 @@ function Resume() {
     return (
         <div id='resume-section' className='resume overflow-auto h-screen pt-20 w-full pr-10 2xl:pr-14 5xl:pr-16 pb-14'>
             <div className="resume-inner bg-secondaryBg py-8 px-7">
-                <div ref={el => { nameRef = el }} className="name mb-2 h-14 overflow-hidden">
+                <div ref={el => { nameRef = el }} className="name mb-q h-14 overflow-hidden">
                     <div className='name-inner font-cat-medium text-white text-opacity-90 text-5xl '>
                         Daniel Adeneye
                     </div>
                 </div>
-                <div ref={el => { titleRef = el }} className="title mb-5 h-8 overflow-hidden">
+                <div ref={el => { titleRef = el }} className="title mb-6 h-6 overflow-hidden">
                     <div className="title-inner text-white text-opacity-70 text-xl font-cat-light">
                         Frontend Developer
                     </div>
@@ -45,10 +48,8 @@ function Resume() {
                     {/* Core technologies */}
                     <div ref={el => { coreSkillsRef = el }} className="core-technologies">
                         <div className="title text-white text-opacity-90 text-lg font-cat-medium flex items-center w-full">
-                            <div className="lg:w-60 xl:w-52 3xl:w-48 flex flex-nowrap">
-                                <p>
-                                    Core Technologies
-                                </p>
+                            <div className="flex flex-nowrap pr-1.5">
+                                <span>Core</span> <span className='pl-1'>Technologies</span>
                             </div>
                             {/* Divider line */}
                             <div className="divider-line h-1px w-full bg-white opacity-30">
@@ -64,10 +65,8 @@ function Resume() {
                     {/* Familiar with */}
                     <div ref={el => { familiarSkillsRef = el }} className="familiar-with mt-3">
                         <div className="title text-white text-opacity-90 text-lg font-cat-medium flex items-center w-full">
-                            <div className="lg:w-36 xl:w-32 3xl:w-122px flex flex-nowrap">
-                                <p>
-                                    Familiar With
-                                </p>
+                            <div className="flex flex-nowrap pr-1.5">
+                                <span>Familiar</span> <span className='pl-1'>With</span>
                             </div>
                             {/* Divider line */}
                             <div className="divider-line h-1px w-full bg-white opacity-30">
@@ -82,10 +81,8 @@ function Resume() {
                     {/* On the job */}
                     <div ref={el => { onTheJobSkillsRef = el }} className="on-the-job mt-3">
                         <div className="title text-white text-opacity-90 text-lg font-cat-medium flex items-center w-full">
-                            <div className="lg:w-28 3xl:w-24 flex flex-nowrap">
-                                <p>
-                                    On the Job
-                                </p>
+                            <div className="flex flex-nowrap pr-1.5">
+                                <span>On</span> <span className='pl-1'>the</span> <span className='pl-1'>Job</span>
                             </div>
                             {/* Divider line */}
                             <div className="divider-line h-1px w-full bg-white opacity-30">
@@ -100,10 +97,8 @@ function Resume() {
                     {/* Tools  */}
                     <div ref={el => { toolsSkillsRef = el }} className="tools mt-3">
                         <div className="title text-white text-opacity-90 text-lg font-cat-medium flex items-center w-full">
-                            <div className="lg:w-14 3xl:w-16 flex flex-nowrap">
-                                <p>
-                                    Tools
-                                </p>
+                            <div className="flex flex-nowrap pr-1.5">
+                                <span>Tools</span>
                             </div>
                             {/* Divider line */}
                             <div className="divider-line h-1px w-full bg-white opacity-30">
@@ -122,10 +117,8 @@ function Resume() {
                     {/*   */}
                     <div className="experience-1 mt-3">
                         <div className="title text-white text-opacity-90 text-lg font-cat-medium flex items-center w-full">
-                            <div className="lg:w-56 xl:w-44 3xl:w-48 flex flex-nowrap">
-                                <p>
-                                    Work Experience
-                                </p>
+                            <div className="flex flex-nowrap pr-1.5">
+                                <p>Work </p> <span className='pl-1'> Experience</span>
                             </div>
                             {/* Divider line */}
                             <div className="divider-line h-1px w-full bg-white opacity-30">
@@ -155,10 +148,8 @@ function Resume() {
                     {/*   */}
                     <div className="experience-1 mt-5">
                         <div className="title text-white text-opacity-90 text-lg font-cat-medium flex items-center w-full">
-                            <div className="lg:w-20 flex flex-nowrap">
-                                <p>
-                                    Projects
-                                </p>
+                            <div className="flex flex-nowrap pr-1.5">
+                                <span>Projects</span>
                             </div>
                             {/* Divider line */}
                             <div className="divider-line h-1px w-full bg-white opacity-30">
@@ -168,7 +159,7 @@ function Resume() {
                             <div className="content-inner text-white text-opacity-30 font-cat-light tracking-wider">
                                 <div className="content py-2">
                                     <div className="content-inner text-white text-opacity-30 font-cat-light tracking-wider">
-                                        Links to my works can be found on <Link to="https://daniel-adeneye.netlify.app/work" className='cursor-pointer text-white opacity-80'> daniel-adeneye.netlify.com/work </Link> and more
+                                        Links to my works can be found on <button onClick={handleWorkRouteButton} className='cursor-pointer text-white opacity-80'> sage-dann.netlify.com/work </button> and more
                                         details can be provided upon request
                                     </div>
                                 </div>

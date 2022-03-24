@@ -12,7 +12,7 @@ import MobileWork from './MobileWork';
 import MobileResume from './MobileResume';
 
 
-function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
+function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWorkRouteButton }) {
     const navigate = useNavigate()
     const mobileNavRef = useRef(null);
     const mobileMainRef = useRef(null);
@@ -67,12 +67,17 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
         setMobilePage("Work")
         setPage("Work")
         navigate("/work")
-        window.location.replace("/work")
     }
 
 
 
+
+    let screenHeight = window.innerHeight
+    // alert(height)
+
     useEffect(() => {
+
+
 
 
         const navOpen = document.querySelector(".nav-open")
@@ -89,6 +94,17 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
             // setNavOpen(true);
             navbarSection.classList.remove("hidden")
             mobileMainContent.classList.add("hidden")
+
+            setInterval(() => {
+                if (navbarSection.offsetHeight < screenHeight) {
+                    navbarSection.style.height = `${navbarSection.offsetHeight + 1}px`;
+                    console.log(navbarSection.offsetHeight, screenHeight);
+                } else {
+                    clearInterval()
+                }
+            }, 1);
+            console.log("added 1", navbarSection.offsetHeight);
+
 
 
 
@@ -109,7 +125,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
     return (
         <div className='mobile text-white'>
             {/* Navigation */}
-            <div ref={mobileNavRef} className="mobile-nav hidden relative h-screen overflow-hidden">
+            <div ref={mobileNavRef} className="mobile-nav hidden relative overflow-hidden" style={{ height: 0 }}>
                 {/* Close */}
                 <div className="nav-option flex">
                     <div className="nickname flex justify-end py-5 px-4 md:px-10 text-white text-3xl text-opacity-90 font-cat-medium">
@@ -264,7 +280,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
                                 <MobileWork handleResumeClick={handleResumeClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} />
                                 // Else page === Resume, set to resume
                                 :
-                                <MobileResume handleWorkClick={handleWorkClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} />
+                                <MobileResume handleWorkClick={handleWorkClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} handlehandleWorkRouteButton={handlehandleWorkRouteButton} />
 
                     }
                 </div>

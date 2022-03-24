@@ -7,7 +7,7 @@ import twitterAvatar from "../../assets/img/twitter-avatar.svg";
 import linkedinAvatar from "../../assets/img/linkedin-avatar.svg";
 
 
-function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink }) {
+function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handleWorkRouteButton }) {
     let tl = gsap.timeline()
     let nameRef = useRef(null);
     let titleRef = useRef(null);
@@ -18,6 +18,10 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink }) {
     let toolsSkillsRef = useRef(null);
     let experienceRef = useRef(null);
     let projectsRef = useRef(null);
+
+    // const myFUnc = function (){
+    //     window.location.
+    // }
 
 
     useEffect(() => {
@@ -160,7 +164,7 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink }) {
                                 <div className="content-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
                                     <div className="content py-2">
                                         <div className="content-inner text-white text-opacity-30 font-cat-light tracking-wider">
-                                            Links to my works can be found on <Link to="https://daniel-adeneye.netlify.app/work" className='cursor-pointer text-white opacity-80'> daniel-adeneye.netlify.com/work </Link> and more
+                                            Links to my works can be found on <button onClick={handleWorkRouteButton} className='cursor-pointer text-white opacity-80'>sage-dann.netlify.com/work </button> and more
                                             details can be provided upon request
                                         </div>
                                     </div>
