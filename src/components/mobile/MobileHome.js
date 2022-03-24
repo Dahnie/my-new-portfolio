@@ -211,8 +211,8 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
                                                 </p>
                                             </div>
                                             <div className="mobile-description w-3/4 md:w-4/6 mt-2 md:mt-5">
-                                                <p className='text-center text-white text-opacity-60'>
-                                                    I'm a <span className=' text-white text-opacity-60 mobile-bio-text-1'>frontend developer</span>. I build high quality and modern <span className='mobile-bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user experieces. I am currently learning <span className="mobile-bio-text-3 text-white text-opacity-60">server-side development</span> and I am also deeply interested in <span className='bio-text-4 text-white text-opacity-60'>cybersecurity</span>.
+                                                <p className='text-center text-white text-opacity-60 text-sm'>
+                                                    I'm a <span className=' text-white text-opacity-60 mobile-bio-text-1'>frontend developer</span>. I build high quality and modern <span className='mobile-bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user <span className='mobile-bio-text-3 text-white text-opacity-60'>experieces</span>. I am <span className="mobile-bio-text-4 text-white text-opacity-60">currently learning</span> server-side development and I am also deeply interested in <span className='bio-text-5 text-white text-opacity-60'>cybersecurity</span>.
                                                 </p>
                                             </div>
                                         </div>
@@ -222,31 +222,33 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
                                         </div>
 
                                         {/* footer */}
-                                        <div className="footer mt-24 md:mt-36 flex flex-col items-center">
-                                            {/* social links */}
-                                            <div className="social-links flex px-3 py-2 w-max">
-                                                {/* Github */}
-                                                <a href="https://github.com/Dahnie" className="mobile-github-link">
-                                                    <img src={githubAvatar} alt="github" className="h-7" />
-                                                </a>
-                                                {/* Mail */}
-                                                <Link to="#" onClick={handleMailLink} className="mobile-mail-link">
-                                                    <img src={mailAvatar} alt="mail" className="h-7 px-2 mx-6" />
-                                                </Link>
-                                                {/* LinkedIn */}
-                                                {/* TODO get the correct avatar */}
-                                                <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
-                                                    <img src={linkedinAvatar} alt="linkedin" className="h-7 pr-2 mr-6" />
-                                                </a>
-                                                {/* Twitter */}
-                                                {/* TODO Get the correct twitter link */}
-                                                <a href="https://twitter.com/sage_dann" className="mobile-twitter-link">
-                                                    <img src={twitterAvatar} alt="" className="h-7" />
-                                                </a>
-                                            </div>
-                                            {/* Inspiration Text */}
-                                            <div className="mobile-inspiration-text mt-2 text-white text-opacity-60 font-cat-medium">
-                                                <p>Inspired by <span className='text-white text-opacity-100'>Kadet</span></p>
+                                        <div className="footer w-full absolute bottom-5 flex justify-center">
+                                            <div className="footer-inner w-max flex flex-col items-center">
+                                                {/* social links */}
+                                                <div className="social-links flex px-3 py-2 w-max">
+                                                    {/* Github */}
+                                                    <a href="https://github.com/Dahnie" className="mobile-github-link">
+                                                        <img src={githubAvatar} alt="github" className="h-7" />
+                                                    </a>
+                                                    {/* Mail */}
+                                                    <Link to="#" onClick={handleMailLink} className="mobile-mail-link">
+                                                        <img src={mailAvatar} alt="mail" className="h-7 px-2 mx-6" />
+                                                    </Link>
+                                                    {/* LinkedIn */}
+                                                    {/* TODO get the correct avatar */}
+                                                    <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
+                                                        <img src={linkedinAvatar} alt="linkedin" className="h-7 pr-2 mr-6" />
+                                                    </a>
+                                                    {/* Twitter */}
+                                                    {/* TODO Get the correct twitter link */}
+                                                    <a href="https://twitter.com/sage_dann" className="mobile-twitter-link">
+                                                        <img src={twitterAvatar} alt="" className="h-7" />
+                                                    </a>
+                                                </div>
+                                                {/* Inspiration Text */}
+                                                <div className="mobile-inspiration-text mt-2 text-white text-opacity-60 font-cat-medium">
+                                                    <p>Inspired by <span className='text-white text-opacity-100'>Kadet</span></p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

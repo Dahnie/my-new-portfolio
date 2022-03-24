@@ -177,8 +177,8 @@ function Home() {
         // Handles bio text animation
         setInterval(() => {
             tl
-                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
-                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
+                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
+                .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5", ".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
 
         }, 6000)
 
@@ -240,7 +240,7 @@ function Home() {
                             </div>
                         </div>
                         <div ref={el => { briefbioRef = el }} className="brief-bio py-5 w-400px 2xl:w-480px leading-7 text-white text-opacity-60 font-cat-light">
-                            I'm a <span className=' text-white text-opacity-60 bio-text-1'>frontend developer</span>. I build high quality and modern <span className='bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user experieces. I am currently learning <span className="bio-text-3 text-white text-opacity-60">server-side development</span> and I am also deeply interested in <span className='bio-text-4 text-white text-opacity-60'>cybersecurity</span>.
+                            I'm a <span className=' text-white text-opacity-60 bio-text-1'>frontend developer</span>. I build high quality and modern <span className='bio-text-2 text-white text-opacity-60'>web applications</span> with amazing user interfaces with dynamic user <span className='bio-text-3 text-white text-opacity-60'>experieces</span>. I am <span className="bio-text-4 text-white text-opacity-60">currently learning</span>  server-side development and I am also deeply interested in <span className='bio-text-5 text-white text-opacity-60'>cybersecurity</span>.
                         </div>
 
                         {/* App navigation Section */}
