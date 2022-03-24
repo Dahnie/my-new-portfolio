@@ -21,6 +21,10 @@ module.exports = {
       },
       screens: {
         //  => @media(min-wwidth: 1840px) {...}
+        "xx-s": "355px",
+        //  => @media(min-wwidth: 1840px) {...}
+        "xs": "415px",
+        //  => @media(min-wwidth: 1840px) {...}
         "3xl": "1840px",
         //  => @media(min-wwidth: 2160px) {...}
         "4xl": "2160px",

@@ -250,7 +250,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
                                                     </a>
                                                 </div>
                                                 {/* Inspiration Text */}
-                                                <div className="mobile-inspiration-text mt-2 text-white text-opacity-60 font-cat-medium">
+                                                <div className="mobile-inspiration-text mt-2 text-sm text-white text-opacity-60 font-cat-medium">
                                                     <p>Inspired by <a href="https://twitter.com/kadetXx" className='text-white text-opacity-100'>Kadet</a></p>
                                                 </div>
                                             </div>
@@ -260,10 +260,10 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage }) {
                             )
                             // Else if page === Work, set to work
                             : mobilePage === "Work" ?
-                                <MobileWork handleResumeClick={handleResumeClick} handleHomeClick={handleHomeClick} />
+                                <MobileWork handleResumeClick={handleResumeClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} />
                                 // Else page === Resume, set to resume
                                 :
-                                <MobileResume handleWorkClick={handleWorkClick} handleHomeClick={handleHomeClick} />
+                                <MobileResume handleWorkClick={handleWorkClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} />
 
                     }
                 </div>

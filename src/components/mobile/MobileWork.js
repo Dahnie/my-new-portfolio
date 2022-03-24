@@ -6,7 +6,7 @@ import mailAvatar from "../../assets/img/mail-avatar.svg";
 import twitterAvatar from "../../assets/img/twitter-avatar.svg";
 import linkedinAvatar from "../../assets/img/linkedin-avatar.svg";
 
-function MobileWork({ handleResumeClick, handleHomeClick }) {
+function MobileWork({ handleResumeClick, handleHomeClick, handleMailLink }) {
 
     const featuredProjects = [
         {
@@ -91,12 +91,6 @@ function MobileWork({ handleResumeClick, handleHomeClick }) {
     ]
 
     // Functions
-    // Handle mail link actions
-    const handleMailLink = function (e) {
-        e.preventDefault()
-        window.location.replace("mailto:adeneyedaniel007@gmail.com")
-    }
-
 
     return (
         <div className='mobile-work'>
@@ -178,14 +172,14 @@ function MobileWork({ handleResumeClick, handleHomeClick }) {
                     </button>
                 </div>
                 <div className="nav-btn pl-2">
-                    <button onClick={handleResumeClick} className='home-btn bg-secondaryBg w-32 md:w-56 px-3 py-2'>
-                        Resume
+                    <button onClick={handleResumeClick} className='resume-btn bg-secondaryBg w-32 md:w-56 px-3 py-2'>
+                        Résumé
                     </button>
                 </div>
             </div>
 
             {/* Soccials Section */}
-            <div className="social-section mt-12 mb-12 flex flex-col items-center">
+            <div className="social-section mt-12 mb-16 flex flex-col items-center">
                 {/* social links */}
                 <div className="social-links flex px-3 py-2 w-max">
                     {/* Github */}
