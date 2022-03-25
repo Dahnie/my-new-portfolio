@@ -13,7 +13,7 @@ import MobileWork from './MobileWork';
 import MobileResume from './MobileResume';
 
 
-function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWorkRouteButton }) {
+function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteButton }) {
 
     const tl = gsap.timeline();
     const navigate = useNavigate()
@@ -279,7 +279,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
                                 <MobileWork handleResumeClick={handleResumeClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} />
                                 // Else page === Resume, set to resume
                                 :
-                                <MobileResume handleWorkClick={handleWorkClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} handlehandleWorkRouteButton={handlehandleWorkRouteButton} />
+                                <MobileResume handleWorkClick={handleWorkClick} handleHomeClick={handleHomeClick} handleMailLink={handleMailLink} handleWorkRouteButton={handleWorkRouteButton} />
 
                     }
                 </div>

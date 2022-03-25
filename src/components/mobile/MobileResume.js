@@ -160,7 +160,7 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
                                 <div className="content-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
                                     <div className="content py-2">
                                         <div className="content-inner text-white text-opacity-30 font-cat-light tracking-wider">
-                                            Links to my works can be found on <button onClick={handleWorkRouteButton} className='cursor-pointer text-white opacity-80'>sage-dann.netlify.com/work </button> and more
+                                            Links to my works can be found on <button onClick={handleWorkRouteButton} className='text-white opacity-80 outline-none bg-red-700'>sage-dann.netlify.com/work </button> and more
                                             details can be provided upon request
                                         </div>
                                     </div>

@@ -317,7 +317,7 @@ function Home() {
 
                 {/* Container for mobile view */}
                 <div className="mobile-container lg:hidden bg-primaryBg">
-                    <MobileHome page={page} setPage={setPage} mobilePage={mobilePage} setMobilePage={setMobilePage} />
+                    <MobileHome page={page} setPage={setPage} mobilePage={mobilePage} setMobilePage={setMobilePage} handleWorkRouteButton={handleWorkRouteButton} />
                 </div>
 
             </div>
