@@ -7,6 +7,7 @@ import mailAvatar from "../../assets/img/mail-avatar.svg";
 import twitterAvatar from "../../assets/img/twitter-avatar.svg";
 import linkedinAvatar from "../../assets/img/linkedin-avatar.svg";
 import navClose from "../../assets/img/nav-close.svg";
+import navLine from "../../assets/img/nav-line.svg";
 import navBurger from "../../assets/img/nav-burger.svg";
 import rightArrow from "../../assets/img/right-arrow.svg"
 import MobileWork from './MobileWork';
@@ -76,12 +77,18 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
     useEffect(() => {
         // Burger animation
         gsap.to(".mobile-nav-content", { duration: 0, y: -60, opacity: 0 })
+
+        //  Handle close button animation when navbar is left or closed
+        gsap.to(".nav-close-up", { duration: 0, rotate: "0", opacity: 0 })
+        gsap.to(".nav-close-down", { duration: 0, rotate: "0", opacity: 0 })
     }, [location])
 
     useEffect(() => {
 
         const navOpen = document.querySelector(".nav-open")
         const navClose = document.querySelector(".nav-close")
+        const navCloseUpLine = document.querySelector(".nav-close-up")
+        const navCloseDownLine = document.querySelector(".nav-close-down")
         const navbarSection = document.querySelector(".mobile-nav")
         const mobileMainContent = document.querySelector(".mobile-main-content")
 
@@ -105,7 +112,10 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
             mobileMainContent.classList.add("hidden");
             // Burger animation
             gsap.to(".mobile-nav-content", { duration: 0.5, y: 5, opacity: 1, ease: "power3.easeOut" })
-            // .from(".mobile-nav", { duration: 0, css: { visibility: "hidden" } })            
+
+            //  Handle close button animation
+            gsap.to(navCloseUpLine, { duration: 0.4, rotate: "45", opacity: 1 })
+            gsap.to(navCloseDownLine, { duration: 0.4, rotate: "-45", opacity: 1 })
 
         })
 
@@ -119,6 +129,9 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
             // Burger animation
             gsap.to(".mobile-nav-content", { duration: 0, y: -60, opacity: 0 })
 
+            //  Handle close button animation when navbar is left or closed
+            gsap.to(navCloseUpLine, { duration: 0, rotate: "0", opacity: 0 })
+            gsap.to(navCloseDownLine, { duration: 0, rotate: "0", opacity: 0 })
         })
 
     })
@@ -133,7 +146,16 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
                     </div>
 
                     <div className="nav-option-inner w-full flex justify-end py-5 px-3 md:px-10">
-                        <img className='nav-close py-3 px-3' src={navClose} alt="cancel" />
+                        {/* <img className='nav-close py-3 px-3' src={navClose} alt="cancel" /> */}
+                        {/* <div className="nav-close">
+                            <img className='nav-close-up mt-3 px-3 rotate-45' src={navLine} alt="cancel" />
+                            <img className='nav-close-down -mt-0.5 px-3 -rotate-45' src={navLine} alt="cancel" />
+                        </div> */}
+                        <div className="nav-close">
+                            <img className='nav-close-up mb-3 px-3 opacity-0' src={navLine} alt="cancel" style={{ transformOrigin: "left" }} />
+                            <img className='nav-close-down my-7 absolute px-3 opacity-0' src={navLine} alt="cancel" style={{ transformOrigin: "left" }} />
+                        </div>
+
                     </div>
                 </div>
 

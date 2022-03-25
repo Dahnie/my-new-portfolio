@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from "gsap";
+import linkedinAvatar from "../assets/img/linkedin-avatar.svg";
 
 
 function Resume({ handleWorkRouteButton }) {
@@ -24,9 +25,14 @@ function Resume({ handleWorkRouteButton }) {
     return (
         <div id='resume-section' className='resume overflow-auto h-screen pt-20 w-full pr-10 2xl:pr-14 5xl:pr-16 pb-14'>
             <div className="resume-inner bg-secondaryBg py-8 px-7">
-                <div ref={el => { nameRef = el }} className="name mb-q h-14 overflow-hidden">
-                    <div className='name-inner font-cat-medium text-white text-opacity-90 text-5xl '>
-                        Daniel Adeneye
+                <div className="resume-top">
+                    <div ref={el => { nameRef = el }} className="name h-14 overflow-hidden flex justify-between">
+                        <div className='name-inner font-cat-medium text-white text-opacity-90 text-5xl '>
+                            Daniel Adeneye
+                        </div>
+                        <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className='linkedin-link flex justify-end items-center pr-2'>
+                            <img className='h-8' src={linkedinAvatar} alt="linkedin" />
+                        </a>
                     </div>
                 </div>
                 <div ref={el => { titleRef = el }} className="title mb-6 h-6 overflow-hidden">
