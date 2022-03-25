@@ -16,7 +16,7 @@ function Work() {
             description: "A sticky-note-taking application",
             githubLink: "https://github.com/Dahnie/Notepad-pro",
             isProjectLive: true,
-            projectLink: "https://quik-notes.netlify.app",
+            projectLink: "https://quik-note.netlify.app",
         },
 
         {
