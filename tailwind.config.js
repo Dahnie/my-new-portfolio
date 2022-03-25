@@ -19,6 +19,9 @@ module.exports = {
         "40per": "40%",
         "55per": "55%",
       },
+      fontSize: {
+        "10xl": "1000%",
+      },
       screens: {
         //  => @media(min-wwidth: 1840px) {...}
         "xx-s": "355px",

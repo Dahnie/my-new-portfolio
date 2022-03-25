@@ -14,10 +14,6 @@ function Resume({ handleWorkRouteButton }) {
     let experienceRef = useRef(null);
     let projectsRef = useRef(null);
 
-    // Functions
-    // handle Work Route Button
-
-
     useEffect(() => {
         tl
             .from([nameRef.children, titleRef.children, bioRef.children], { duration: 1, y: 75, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.25 }, "<.8")

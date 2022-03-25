@@ -86,12 +86,14 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handlehandleWork
         const mobileMainContent = document.querySelector(".mobile-main-content")
 
         // Handles mobile bio text animation
-        setInterval(() => {
-            tl
-                .to([".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
-                .to([".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
+        if (location.pathname === "/") {
+            setInterval(() => {
+                tl
+                    .to([".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
+                    .to([".mobile-bio-text-1", ".mobile-bio-text-2", ".mobile-bio-text-3", ".mobile-bio-text-4", ".mobile-bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
 
-        }, 6000)
+            }, 6000)
+        }
 
 
         // On Nav Open

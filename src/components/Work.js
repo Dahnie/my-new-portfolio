@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import Masonry from 'react-masonry-css'
 import { gsap } from 'gsap';
 import CSSRulePlugin from "gsap/CSSRulePlugin"
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import "../assets/styles/css/Work.css";
 import eyeIcon from "../assets/img/eye-icon.svg";
 import githubAvatar from "../assets/img/github-avatar.svg";
