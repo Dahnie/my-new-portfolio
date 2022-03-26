@@ -37,7 +37,7 @@ function Work() {
             description: "My amazing portfolio",
             githubLink: "https://github.com/Dahnie/my-new-portfolio",
             isProjectLive: true,
-            projectLink: "https://daniel-adeneye.netlify.app"
+            projectLink: "https://sage-dann.netlify.app"
         },
 
         {
