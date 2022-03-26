@@ -79,14 +79,14 @@ function MobileWork({ handleResumeClick, handleHomeClick, handleMailLink }) {
             isProjectLive: false,
             projectLink: "#"
         },
-        {
-            name: "DSA",
-            tools: `JAVASCRIPT(ES6+) + DEEP THINKING`,
-            description: "Algorithm scripting",
-            githubLink: "#",
-            isProjectLive: false,
-            projectLink: "#"
-        }
+        // {
+        //     name: "DSA",
+        //     tools: `JAVASCRIPT(ES6+) + DEEP THINKING`,
+        //     description: "Algorithm scripting",
+        //     githubLink: "#",
+        //     isProjectLive: false,
+        //     projectLink: "#"
+        // }
 
     ]
 
