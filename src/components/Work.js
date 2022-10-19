@@ -235,7 +235,6 @@ function Work() {
                             <div className="project-links flex lg:text-xs 2xl:text-sm text-white text-opacity-60 ">
                                 {/* Used anchor tags because of external link, check if solution to v6 external routing exists later */}
                                 {project.githubLink && (
-
                                     <a href={project.githubLink} target={"_blank"} rel="noreferrer" className="github-link flex pr-4">
                                         <img className="relative -top-0.5" src={githubAvatar} alt="github-icon" />
                                         <p className="px-1">Code</p>

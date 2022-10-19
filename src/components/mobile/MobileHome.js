@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { gsap } from "gsap"
-import profileImg from "../../assets/img/profile-img.png";
+import profileImg from "../../assets/img/avatar-edit.png";
 import githubAvatar from "../../assets/img/github-avatar.svg";
 import mailAvatar from "../../assets/img/mail-avatar.svg";
 import twitterAvatar from "../../assets/img/twitter-avatar.svg";

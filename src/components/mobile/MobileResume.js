@@ -58,7 +58,7 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
                             </div>
                             <div className="content py-2">
                                 <div className="content-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
-                                    HTML/CSS/Tailwind CSS, Javascript [ES6+], React JS, Next JS, Redux, Flux, Git,
+                                    HTML/CSS/Tailwind CSS, Javascript [ES6+], React JS, Next JS, CSS-in-JS, Typescript, Redux, Firebase, Git,
                                     Material UI, GSAP.
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
                             </div>
                             <div className="content py-2">
                                 <div className="content-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
-                                    Node JS, Express, MongoDB, MySQL, Sequelize-cli, Ejs.
+                                    Node JS, Express, MongoDB, Ejs, PWAs, SEO.
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
                             </div>
                             <div className="content py-2">
                                 <div className="content-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
-                                    Agile/ Scrum. Version Control (Git).
+                                    Agile / Scrum. Version Control (Git).
                                 </div>
                             </div>
                         </div>
@@ -125,22 +125,63 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
                                 <div className="divider-line h-1px w-full bg-white opacity-30">
                                 </div>
                             </div>
-                            <div className="work-place pt-3 pb-2">
-                                <div className="work-place-inner text-white text-opacity-70 font-cat-light">
-                                    HNG Internships - Frontend Developer [Intern]
+                            <div className="work-experience-details-wrapper mt-3">
+                                <div className="work-place pt-3 pb-2">
+                                    <div className="work-place-inner text-white text-opacity-70 font-cat-light">
+                                        Tech Minte - Frontend Engineer
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="work-date pb-2">
-                                <div className="work-date-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
-                                    August 2021 - September 2021
+                                <div className="work-date pb-2">
+                                    <div className="work-date-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
+                                        APRIL 2022 - PRESENT
+                                    </div>
                                 </div>
+                                <ul className="tasks-completed list-disc py-1 pl-5">
+                                    <li className='list-none text-white text-[17px] text-opacity-30 font-cat-light tracking-wider mb-2'>
+                                        I’m currently solving problems with 0s and 1s at Tech Minte
+                                    </li>
+                                    <li className='list-none text-white text-opacity-30 font-cat-light tracking-wider mb-[5px]'>
+                                        <span className='-translate-y-[1.5px] inline-block text-[18px]'>■</span> Built products with clean, maintainable, reusable and robust
+                                        code for a diverse array of clients, bringing efficient
+                                        software with seamless UX to live.
+                                    </li>
+                                    <li className='list-none text-white text-opacity-30 font-cat-light tracking-wider mb-[5px]'>
+                                        <span className='-translate-y-[1.5px] inline-block text-[18px]'>■</span>
+                                        Established and maintained efficient and scalable structures and layouts for various web applications.
+                                    </li>
+                                    <li className='list-none text-white text-opacity-30 font-cat-light tracking-wider mb-[5px]'>
+                                        <span className='-translate-y-[1.5px] inline-block text-[18px]'>■</span> Maintained a well structured codebase and used Typescript to improve predictability.
+                                    </li>
+                                    <li className='list-none text-white text-opacity-30 font-cat-light tracking-wider mb-[5px]'>
+                                        <span className='-translate-y-[1.5px] inline-block text-[18px]'>■</span> Engineered state management with Redux and Hooks.
+                                    </li>
+                                    <li className='list-none text-white text-opacity-30 font-cat-light tracking-wider mb-[5px]'>
+                                        <span className='-translate-y-[1.5px] inline-block text-[18px]'>■</span> Used Next Js to deliver optimised, pre-rendered pages when necessary.
+                                    </li>
+                                    <li className='list-none text-white text-opacity-30 font-cat-light tracking-wider mb-[5px]'>
+                                        <span className='-translate-y-[1.5px] inline-block text-[18px]'>■</span> Worked
+                                        on various connections with RESTful APIs using axios and the Fetch API.
+                                    </li>
+                                </ul>
                             </div>
-                            <ul className="tasks-completed list-disc py-1 pl-5">
-                                <li className="tasks-completed-inner list-item text-white text-opacity-30 text-sm font-cat-light tracking-wider">
-                                    I contributed in developing user interfaces for quite a number of products
-                                    within three months while learning new skills.
-                                </li>
-                            </ul>
+                            <div className="work-experience-details-wrapper mt-3">
+                                <div className="work-place pt-3 pb-2">
+                                    <div className="work-place-inner text-white text-opacity-70 font-cat-light">
+                                        HNG Internships - Frontend Developer [Intern]
+                                    </div>
+                                </div>
+                                <div className="work-date pb-2">
+                                    <div className="work-date-inner text-white text-opacity-30 text-sm font-cat-light tracking-wider">
+                                        AUGUST 2021 - SEPTEMBER 2021
+                                    </div>
+                                </div>
+                                <ul className="tasks-completed list-disc py-1 pl-5">
+                                    <li className="tasks-completed-inner list-none text-white text-opacity-30 font-cat-light tracking-wider">
+                                        <span className='-translate-y-[1.5px] inline-block text-[18px]'>■</span> Contributed in developing user interfaces for quite a number of products
+                                        within three months while learning new skills.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
