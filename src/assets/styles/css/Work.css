@@ -1,5 +1,6 @@
 #work-section {
-  visibility: hidden;
+  /* FIX Uncomment as it works with animations  */
+  /* visibility: hidden; */
 }
 
 /* Featured projects */

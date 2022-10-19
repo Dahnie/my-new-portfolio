@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import Work from "./Work";
 import Resume from "./Resume";
 import "../assets/styles/css/App.css";
-import profileImg from "../assets/img/profile-img.png";
+import profileImg from "../assets/img/avatar-edit.png";
 import githubAvatar from "../assets/img/github-avatar.svg";
 import mailAvatar from "../assets/img/mail-avatar.svg";
 import twitterAvatar from "../assets/img/twitter-avatar.svg";
@@ -176,19 +176,20 @@ function Home() {
         // GSAP ANIMATIONS START
         tl
             .to(webcontainerRef, { duration: 0, css: { visibility: "visible" } })
-            .from([firstIntroductionLine.children, secondIntroductionLine.children], { duration: 1, y: 75, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.18 }, "<.8")
-            .from(briefbioRef, { duration: .8, opacity: 0, y: 50, ease: "power3.easeInOut", delay: .1 })
-            .from(appNavigationRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut" })
-            .from(profileImgRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut", delay: .1 })
-            .from([githubLinkRef, mailLinkRef, twitterLinkRef, inspirationTextRef], { duration: 1, x: -30, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.2 }, "<.3")
+        // FIX Uncomment animations
+        //     .from([firstIntroductionLine.children, secondIntroductionLine.children], { duration: 1, y: 75, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.18 }, "<.8")
+        //     .from(briefbioRef, { duration: .8, opacity: 0, y: 50, ease: "power3.easeInOut", delay: .1 })
+        //     .from(appNavigationRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut" })
+        //     .from(profileImgRef, { duration: .5, opacity: 0, x: -30, ease: "power3.easeInOut", delay: .1 })
+        //     .from([githubLinkRef, mailLinkRef, twitterLinkRef, inspirationTextRef], { duration: 1, x: -30, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.2 }, "<.3")
 
-        // Handles bio text animation
+        // // Handles bio text animation
         setInterval(() => {
             tl
                 .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
                 .to([".bio-text-1", ".bio-text-2", ".bio-text-3", ".bio-text-4", ".bio-text-5"], { duration: 2, css: { color: "rgba(255, 255, 255, .6)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
 
-        }, 6000)
+        }, 4000)
 
         // GSAP ANIMATIONS END
 
