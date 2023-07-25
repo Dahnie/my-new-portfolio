@@ -11,7 +11,7 @@ export const featuredProjects = [
     {
         name: "Credley",
         tools: `NEXTJS + TYPESCRIPT + TAILWINDCSS`,
-        description: "Landing page for a salary advance / BNPL company",
+        description: "Landing page for an employee benefits company",
         githubLink: "",
         isProjectLive: true,
         projectLink: "https://credley.africa",
