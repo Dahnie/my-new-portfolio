@@ -224,6 +224,8 @@ function Home() {
     useEffect(() => {
         handlePageChangeOnRouteChange()
         // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        window.scrollTo({ top: 0, behavior: "smooth" })
     }, [location])
 
 
@@ -281,7 +283,7 @@ function Home() {
                                 <img src={profileImg} alt="avatar-img" />
                             </div>
                             {/* Github */}
-                            <a href="https://github.com/Dahnie" ref={el => { githubLinkRef = el }} className="social-github flex items-center ml-5 mr-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
+                            <a target='_blank' rel="noreferrer" href="https://github.com/Dahnie" ref={el => { githubLinkRef = el }} className="social-github flex items-center ml-5 mr-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
                                 <img className="relative -top-0.5" src={githubAvatar} alt="github" />
                                 <p className="px-1.5">Github</p>
                                 <img src={arrowUp} alt="arrow-up" />
@@ -295,7 +297,7 @@ function Home() {
                             </Link>
 
                             {/* Twitter */}
-                            <a href='https://twitter.com/sage_dann' ref={el => { twitterLinkRef = el }} className="social-twitter flex items-center mx-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
+                            <a target='_blank' rel="noreferrer" href='https://twitter.com/sage_dann' ref={el => { twitterLinkRef = el }} className="social-twitter flex items-center mx-2 font-cat-medium cursor-pointer hover:text-white hover:text-opacity-100 hover:transition-all">
                                 <img className="relative -top-0.5" src={twitterAvatar} alt="linkedin" />
                                 <p className="px-1.5">Twitter</p>
                                 <img src={arrowUp} alt="arrow-up" />
@@ -304,7 +306,7 @@ function Home() {
 
                         {/* Inspiration Section */}
                         <div ref={el => { inspirationTextRef = el }} className="inspiration-text text-white text-opacity-60 font-cat-light py-5">
-                            <p>Inspired by <a href="https://twitter.com/kadetXx" className="text-white font-cat-light text-opacity-100">kadet</a>
+                            <p>Inspired by <a target='_blank' rel="noreferrer" href="https://twitter.com/kadetXx" className="text-white font-cat-light text-opacity-100">kadet</a>
                             </p>
                         </div>
                     </div>

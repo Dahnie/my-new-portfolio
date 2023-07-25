@@ -11,6 +11,14 @@ function Work() {
     // Featured projects array
     const featuredProjects = [
         {
+            name: "Altepay",
+            tools: `REACTJS + TYPESCRIPT`,
+            description: "Landing page for a savings and purchase application",
+            githubLink: "",
+            isProjectLive: true,
+            projectLink: "https://www.getaltepay.com/",
+        },
+        {
             name: "Credley",
             tools: `NEXTJS + TYPESCRIPT + TAILWINDCSS`,
             description: "Landing page for a salary advance / BNPL company",
@@ -18,18 +26,18 @@ function Work() {
             isProjectLive: true,
             projectLink: "https://credley.africa",
         },
-        {
-            name: "Docil",
-            tools: `REACTJS + TYPESCRIPT`,
-            description: "Landing page for a loan and investment organisation",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://docil.africa",
-        }
     ]
 
     // Other projects array
     const otherProjects = [
+        {
+            name: "Marine Portal",
+            tools: `REACTJS + TYPESCRIPT`,
+            description: "Marine insurance application",
+            githubLink: "",
+            isProjectLive: true,
+            projectLink: "https://marineportal.heirsinsurance.com",
+        },
         {
             name: "Finakip",
             tools: `REACTJS + TYPESCRIPT`,
@@ -55,6 +63,14 @@ function Work() {
             projectLink: "https://www.techminte.com",
         },
         {
+            name: "Bantoju Admin Application",
+            tools: `REACTJS + TYPESCRIPT`,
+            description: "Beauty wellness application",
+            githubLink: "",
+            isProjectLive: true,
+            projectLink: "https://admin.bantoju.ng",
+        },
+        {
             name: "Quik Notes",
             tools: `REACT + TAILWINDCSS + MATERIAL UI`,
             description: "A sticky-note-taking application",
@@ -62,14 +78,14 @@ function Work() {
             isProjectLive: true,
             projectLink: "https://quik-note.netlify.app",
         },
-        {
-            name: "Visaprof",
-            tools: `REACTJS + TYPESCRIPT`,
-            description: "Visa application process services",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://www.staging-app.visaprof.com/",
-        },
+        // {
+        //     name: "Visaprof",
+        //     tools: `REACTJS + TYPESCRIPT`,
+        //     description: "Visa application process services",
+        //     githubLink: "",
+        //     isProjectLive: true,
+        //     projectLink: "https://www.staging-app.visaprof.com/",
+        // },
         {
             name: "My portfolio",
             tools: `REACT + GSAP`,
@@ -288,7 +304,7 @@ function Work() {
                                     {project.isProjectLive &&
                                         (<a href={project.projectLink} target={"_blank"} rel="noreferrer" className="live-link flex items-center">
                                             <img className="relative lg:h-4 xl:h-max xl:-top-0.5" src={eyeIcon} alt="eye-icon" />
-                                            <p className="px-1">View project</p>
+                                            <p className="px-1">View live</p>
                                         </a>)
                                     }
                                 </div>

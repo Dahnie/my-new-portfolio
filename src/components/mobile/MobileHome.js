@@ -196,7 +196,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
                         <div className="social-links flex px-3 py-2 w-max">
                             {/* Github */}
                             {/* Used anchor tags because of external link, check if solution to v6 external routing exists later */}
-                            <a href="https://github.com/Dahnie" className="mobile-github-link">
+                            <a target='_blank' rel="noreferrer" href="https://github.com/Dahnie" className="mobile-github-link">
                                 <img src={githubAvatar} alt="github" className="h-7" />
                             </a>
 
@@ -207,13 +207,13 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
 
                             {/* LinkedIn */}
                             {/* Used anchor tags because of external link, check if solution to v6 external routing exists later */}
-                            <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
+                            <a target='_blank' rel="noreferrer" href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
                                 <img src={linkedinAvatar} alt="linkedin" className="h-7 pr-2 mr-2.5" />
                             </a>
 
                             {/* Twitter */}
                             {/* Used anchor tags because of external link, check if solution to v6 external routing exists later */}
-                            <a href="https://twitter.com/sage_dann" className="mobile-twitter-link">
+                            <a target='_blank' rel="noreferrer" href="https://twitter.com/sage_dann" className="mobile-twitter-link">
                                 <img src={twitterAvatar} alt="" className="h-7" />
                             </a>
                         </div>
@@ -269,7 +269,7 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
                                                 {/* social links */}
                                                 <div className="social-links flex px-3 py-2 w-max">
                                                     {/* Github */}
-                                                    <a href="https://github.com/Dahnie" className="mobile-github-link">
+                                                    <a target='_blank' rel="noreferrer" href="https://github.com/Dahnie" className="mobile-github-link">
                                                         <img src={githubAvatar} alt="github" className="h-7" />
                                                     </a>
                                                     {/* Mail */}
@@ -278,18 +278,18 @@ function MobileHome({ page, setPage, mobilePage, setMobilePage, handleWorkRouteB
                                                     </Link>
                                                     {/* LinkedIn */}
                                                     {/* TODO get the correct avatar */}
-                                                    <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className="mobile-linkedin-link">
+                                                    <a target='_blank' rel="noreferrer" href="https://www.linkedin.com/in/daniel-adeneye-07/" className="mobile-linkedin-link">
                                                         <img src={linkedinAvatar} alt="linkedin" className="h-7 pr-2 mr-6" />
                                                     </a>
                                                     {/* Twitter */}
                                                     {/* TODO Get the correct twitter link */}
-                                                    <a href="https://twitter.com/sage_dann" className="mobile-twitter-link">
+                                                    <a target='_blank' rel="noreferrer" href="https://twitter.com/sage_dann" className="mobile-twitter-link">
                                                         <img src={twitterAvatar} alt="" className="h-7" />
                                                     </a>
                                                 </div>
                                                 {/* Inspiration Text */}
                                                 <div className="mobile-inspiration-text mt-2 text-sm text-white text-opacity-60 font-cat-medium">
-                                                    <p>Inspired by <a href="https://twitter.com/kadetXx" className='text-white text-opacity-100'>Kadet</a></p>
+                                                    <p>Inspired by <a target='_blank' rel="noreferrer" href="https://twitter.com/kadetXx" className='text-white text-opacity-100'>Kadet</a></p>
                                                 </div>
                                             </div>
                                         </div>

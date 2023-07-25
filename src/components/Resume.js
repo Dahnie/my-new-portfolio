@@ -31,7 +31,7 @@ function Resume({ handleWorkRouteButton }) {
                         <div className='name-inner font-cat-medium text-white text-opacity-90 text-5xl '>
                             Daniel Adeneye
                         </div>
-                        <a href="https://https://www.linkedin.com/in/daniel-adeneye-0825b81a1/" className='linkedin-link flex justify-end items-center pr-2'>
+                        <a target='_blank' rel="noreferrer" href="https://www.linkedin.com/in/daniel-adeneye-07/" className='linkedin-link flex justify-end items-center pr-2'>
                             <img className='h-8' src={linkedinAvatar} alt="linkedin" />
                         </a>
                     </div>
