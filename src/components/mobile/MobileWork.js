@@ -5,90 +5,9 @@ import githubAvatar from "../../assets/img/github-avatar.svg";
 import mailAvatar from "../../assets/img/mail-avatar.svg";
 import twitterAvatar from "../../assets/img/twitter-avatar.svg";
 import linkedinAvatar from "../../assets/img/linkedin-avatar.svg";
+import { featuredProjects, otherProjects } from '../../utils/projects';
 
 function MobileWork({ handleResumeClick, handleHomeClick, handleMailLink }) {
-
-    const featuredProjects = [
-        {
-            name: "Credley",
-            tools: `NEXTJS + TYPESCRIPT + TAILWINDCSS`,
-            description: "Landing page for a salary advance / BNPL company",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://credley.africa",
-        },
-        {
-            name: "Docil",
-            tools: `REACTJS + TYPESCRIPT`,
-            description: "Landing page for a loan and investment organisation",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://docil.africa",
-        }
-    ]
-
-    const otherProjects = [
-        {
-            name: "Finakip",
-            tools: `REACTJS + TYPESCRIPT`,
-            description: "Finance management website",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://www.finakip.com",
-        },
-        {
-            name: "Simptomini",
-            tools: `REACTJS + TYPESCRIPT`,
-            description: "Website for a digital healthcare provider",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://www.simptomini.com",
-        },
-        {
-            name: "Tech Minte",
-            tools: `REACTJS + TYPESCRIPT`,
-            description: "Software agency company website",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://www.techminte.com",
-        },
-        {
-            name: "Quik Notes",
-            tools: `REACT + TAILWINDCSS + MATERIAL UI`,
-            description: "A sticky-note-taking application",
-            githubLink: "https://github.com/Dahnie/Notepad-pro",
-            isProjectLive: true,
-            projectLink: "https://quik-note.netlify.app",
-        },
-        {
-            name: "Visaprof",
-            tools: `REACTJS + TYPESCRIPT`,
-            description: "Visa application process services",
-            githubLink: "",
-            isProjectLive: true,
-            projectLink: "https://www.staging-app.visaprof.com/",
-        },
-        {
-            name: "My portfolio",
-            tools: `REACT + GSAP`,
-            description: "My amazing portfolio",
-            githubLink: "https://github.com/Dahnie/my-new-portfolio",
-            isProjectLive: true,
-            projectLink: "https://sage-dann.netlify.app"
-        },
-
-        {
-            name: "Flick app",
-            tools: `REACT + REACT BOOTSTRAP`,
-            description: "A dashboard, signin and signup build",
-            githubLink: "https://github.com/Dahnie/flick-project",
-            isProjectLive: true,
-            projectLink: "https://flick-dash.netlify.app"
-        },
-    ]
-
-    // Functions
-
     return (
         <div className='mobile-work'>
             {/* FEATURED */}
