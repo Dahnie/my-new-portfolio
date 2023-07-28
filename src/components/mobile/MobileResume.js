@@ -26,6 +26,16 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
         //     .from([coreSkillsRef, familiarSkillsRef, onTheJobSkillsRef, toolsSkillsRef, experienceRef, projectsRef], { duration: 1, delay: .5, x: 150, opacity: 0, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0.25 }, "<1")
 
     }, [])
+
+
+    useEffect(() => {
+        setInterval(() => {
+            tl
+                .to([".resume-link-wrapper",], { duration: 1.7, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
+                .to([".resume-link-wrapper",], { duration: 1.7, css: { color: "rgba(255, 255, 255, .8)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
+
+        }, 5000)
+    }, [])
     return (
         <div className="mobile-resume">
             <div id='resume-section' className='resume w-11/12 pb-8 pl-8 md:pl-14'>
@@ -42,7 +52,9 @@ function MobileResume({ handleWorkClick, handleHomeClick, handleMailLink, handle
                     </div>
                     <div ref={el => { bioRef = el }} className="bio mb-10 h-max overflow-hidden">
                         <div className="bio-inner text-white text-opacity-40 font-cat-light leading-6">
-                            I’m a <span className='text-white text-opacity-40'>frontend developer</span>. I harness modern tools and technologies in the design, build and customization of high quality and modern web applications with amazing user interfaces and dynamic user experiences. I am currently learning server-side development and I am also deeply interested in cybersecurity.
+                            I’m a <span className='text-white text-opacity-40'>frontend developer</span>. I harness modern tools and technologies in the design, build and customization of high quality and modern web applications with amazing user interfaces and dynamic user experiences.
+                            I am currently learning server-side development and I am also deeply interested in cybersecurity.
+                            You can download my <a className='text-white text-opacity-60 resume-link-wrapper' rel="noreferrer" target='_blank' href={"https://drive.google.com/file/d/1eHlcYdE3WPfwefClql9e2eCUqPS_Yi9e/view?usp=sharing"}>resume here</a>
                         </div>
                     </div>
                     <div className="skills">

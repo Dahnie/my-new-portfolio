@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { gsap } from "gsap";
 import linkedinAvatar from "../assets/img/linkedin-avatar.svg";
+import { Link } from 'react-router-dom';
 
 
 function Resume({ handleWorkRouteButton }) {
@@ -23,6 +24,15 @@ function Resume({ handleWorkRouteButton }) {
 
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [])
+
+    useEffect(() => {
+        setInterval(() => {
+            tl
+                .to([".resume-link-wrapper",], { duration: 1.7, css: { color: "rgba(255, 255, 255, 1)" }, ease: "power3.easeInOut", stagger: 0, delay: 2 },)
+                .to([".resume-link-wrapper",], { duration: 1.7, css: { color: "rgba(255, 255, 255, .8)" }, autoAlpha: 0, ease: "power3.easeInOut", stagger: 0 },)
+
+        }, 5000)
+    }, [])
     return (
         <div id='resume-section' className='resume overflow-auto h-screen pt-20 w-full pr-10 2xl:pr-14 5xl:pr-16 pb-14'>
             <div className="resume-inner bg-secondaryBg py-8 px-7">
@@ -43,7 +53,9 @@ function Resume({ handleWorkRouteButton }) {
                 </div>
                 <div ref={el => { bioRef = el }} className="bio mb-10 h-max overflow-hidden">
                     <div className="bio-inner text-white text-opacity-40 font-cat-light leading-6">
-                        I’m a <span className='text-white text-opacity-40'>frontend developer</span>. I harness modern tools and technologies in the design, build and customization of high quality and modern web applications with amazing user interfaces and dynamic user experiences. I am currently learning server-side development and I am also deeply interested in cybersecurity.
+                        I’m a <span className='text-white text-opacity-40'>frontend developer</span>. I harness modern tools and technologies in the design, build and customization of high quality and modern web applications with amazing user interfaces and dynamic user experiences.
+                        I am currently learning server-side development and I am also deeply interested in cybersecurity.
+                        You can download my <a className='text-white text-opacity-60 resume-link-wrapper' rel="noreferrer" target='_blank' href={"https://drive.google.com/file/d/1eHlcYdE3WPfwefClql9e2eCUqPS_Yi9e/view?usp=sharing"}>resume here</a>
                     </div>
                 </div>
                 <div className="skills">
